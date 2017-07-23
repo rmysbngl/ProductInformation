@@ -27,22 +27,16 @@ public class UrunAdapter extends ArrayAdapter<DateAndVacuum> {
         this.context = context;
     }
 
-    @Nullable
-    @Override
-    public DateAndVacuum getItem(int position) {
-        return array.get(position);
-    }
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.urun_adi, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.urun_adi, parent);
         }
 
         TextView tvBilgi = convertView.findViewById(R.id.UrunBilgi);
-        TextView tvVeri =  convertView.findViewById(R.id.UrunVeri);
+        TextView tvVeri = convertView.findViewById(R.id.UrunVeri);
 
         tvBilgi.setText(array.get(position).getDate());
         tvVeri.setText(array.get(position).getVacuumValue());
