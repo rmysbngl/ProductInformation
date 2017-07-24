@@ -30,15 +30,9 @@ public class MainActivity extends AppCompatActivity {
         your_array_list.add("bar");
 
 
-       // List<Product> productList= new ArrayList<>();
-       // productList.add(new Product("kjkl","nkl","nk","oıı","nk"));
-        //productList.add(new Product("kjkl","nkl","nk","oıı","nk"));
 
         ListView urunList=(ListView) findViewById(R.id.UrunList);
-        //UrunAdapter adapter=new UrunAdapter(this, product[0]);
-        //UrunAdapter adapter=new UrunAdapter(this, product[1]);
-        //UrunAdapter adapter=new UrunAdapter(this, product[2]);
-        //urunList.setAdapter(adapter);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,android.R.id.text1,your_array_list );
 
         urunList.setAdapter(adapter);
