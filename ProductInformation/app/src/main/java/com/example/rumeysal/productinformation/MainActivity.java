@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference products = database.getReference("message");
 
-
+	//mike
 
         List<String> your_array_list = new ArrayList<String>();
         your_array_list.add("foo");
