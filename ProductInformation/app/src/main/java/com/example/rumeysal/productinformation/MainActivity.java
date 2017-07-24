@@ -22,14 +22,25 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference products = database.getReference("message");
 
-	//mike
-        //değişiklik yapl
 
         List<String> your_array_list = new ArrayList<String>();
-        your_array_list.add("foo");
-        your_array_list.add("bar");
 
+        DatabaseReference refProduct=FirebaseDatabase.getInstance().getReference().child("Products").child("Product1");
+        refProduct.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                your_array_list.add(dataSnapshot.child("Date").getValue().toString());
+                your_array_list.add(dataSnapshot.child("ID").getValue().toString());
+	 	your_array_list.add(dataSnapshot.child("ProductName").getValue().toString());
+                your_array_list.add(dataSnapshot.child("Unit").getValue().toString());
+                your_array_list.add(dataSnapshot.child("VacuumValue").getValue().toString());
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         ListView urunList=(ListView) findViewById(R.id.UrunList);
 
