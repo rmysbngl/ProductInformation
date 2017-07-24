@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference products = database.getReference("message");
 
 	//mike
+        //değişiklik yapl
 
         List<String> your_array_list = new ArrayList<String>();
         your_array_list.add("foo");
