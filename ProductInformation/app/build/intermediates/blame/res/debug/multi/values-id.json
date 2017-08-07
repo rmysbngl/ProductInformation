@@ -1,0 +1,83 @@
+[
+    {
+        "outputFile": "/Users/rumeysal/Desktop/android/ProductInformation/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-id/values-id.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 58,
+                    "endOffset": 109
+                },
+                "from": {
+                    "file": "/Users/rumeysal/.android/build-cache/9388290cf7670769dc0a4d7bac30954b85dbe78a/output/res/values-id/values-id.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 58,
+                        "endOffset": 109
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 114,
+                    "endColumn": 46,
+                    "endOffset": 156
+                },
+                "from": {
+                    "file": "/Users/rumeysal/.android/build-cache/9388290cf7670769dc0a4d7bac30954b85dbe78a/output/res/values-id/values-id.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 114,
+                        "endColumn": 46,
+                        "endOffset": 156
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 161,
+                    "endColumn": 131,
+                    "endOffset": 288
+                },
+                "from": {
+                    "file": "/Users/rumeysal/.android/build-cache/9388290cf7670769dc0a4d7bac30954b85dbe78a/output/res/values-id/values-id.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 161,
+                        "endColumn": 131,
+                        "endOffset": 288
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 293,
+                    "endColumn": 108,
+                    "endOffset": 397
+                },
+                "from": {
+                    "file": "/Users/rumeysal/.android/build-cache/9388290cf7670769dc0a4d7bac30954b85dbe78a/output/res/values-id/values-id.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 293,
+                        "endColumn": 108,
+                        "endOffset": 397
+                    }
+                }
+            }
+        ]
+    }
+]
