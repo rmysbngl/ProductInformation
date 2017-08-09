@@ -1,22 +1,31 @@
 package com.example.rumeysal.productinformation;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
+import java.util.ArrayList;
+
 /**
  * Created by rumeysal on 7/22/17.
  */
 
 public class Product {
+    private ArrayList<Uri> productImages;
     private String urunadı;
     private String id;
-    private String tarih;
-    private String unity;
-    private String VacuumValue;
+    private String kurumadı;
 
-    public Product(String urunadı, String id, String tarih, String unity, String vacuumValue) {
+
+    public Product(String id, String urunadı) {
         this.urunadı = urunadı;
         this.id = id;
-        this.tarih = tarih;
-        this.unity = unity;
-        VacuumValue = vacuumValue;
+    }
+
+    public Product(String id, String urunadı, String kurumadı) {
+        this.productImages = productImages;
+        this.urunadı = urunadı;
+        this.id = id;
+        this.kurumadı = kurumadı;
     }
 
     public String getUrunadı() {
@@ -35,27 +44,16 @@ public class Product {
         this.id = id;
     }
 
-    public String getTarih() {
-        return tarih;
+
+    public String getKurumadı() {
+        return kurumadı;
     }
 
-    public void setTarih(String tarih) {
-        this.tarih = tarih;
+    public void setProductImages(ArrayList<Uri> productImages) {
+        this.productImages = productImages;
     }
 
-    public String getUnity() {
-        return unity;
-    }
-
-    public void setUnity(String unity) {
-        this.unity = unity;
-    }
-
-    public String getVacuumValue() {
-        return VacuumValue;
-    }
-
-    public void setVacuumValue(String vacuumValue) {
-        VacuumValue = vacuumValue;
+    public ArrayList<Uri> getProductImages() {
+        return productImages;
     }
 }
