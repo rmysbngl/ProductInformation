@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rumeysal.productinformation.SettingPart">
+
+    <TextView
+        android:id="@+id/Vakum"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+
+        android:ems="10"
+        android:text="Vakum"
+        android:textColor="@android:color/background_dark"
+        android:textColorLink="@android:color/background_dark"
+        android:textSize="20dp"
+        android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/VakumText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="VakumT"
+        android:layout_below="@+id/Vakum"
+        android:layout_alignLeft="@+id/Vakum"
+        android:layout_alignStart="@+id/Vakum"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp" />
+
+    <TextView
+        android:id="@+id/Plazma"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/Vakum"
+        android:layout_alignStart="@+id/Vakum"
+
+        android:layout_below="@+id/VakumText"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:text="Plazma"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/PlazmaText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PlazmaT"
+        android:layout_below="@+id/Plazma"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/Gaz"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+        android:text="Gaz"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dp"
+        android:layout_above="@+id/GazText"
+        android:layout_alignLeft="@+id/GazText"
+        android:layout_alignStart="@+id/GazText" />
+
+
+
+    <EditText
+        android:id="@+id/GazText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gaz Text"
+        android:layout_alignTop="@+id/GazPlusOne"
+        android:layout_alignRight="@+id/VakumText"
+        android:layout_alignEnd="@+id/VakumText"
+        android:layout_marginTop="24dp" />
+
+    <Button
+        android:id="@+id/PlusOne"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="+1"
+
+        android:layout_alignBottom="@+id/VakumText"
+        android:layout_toLeftOf="@+id/Plazma"
+        android:layout_toStartOf="@+id/Plazma" />
+
+
+
+    <Button
+        android:id="@+id/MinusOne"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="-1"
+        android:layout_alignBottom="@+id/VakumText"
+        android:layout_alignLeft="@+id/MinusYuz"
+        android:layout_alignStart="@+id/MinusYuz" />
+
+
+
+    <Button
+        android:id="@+id/PlusYuz"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="+100"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/Plazma"
+        android:layout_toStartOf="@+id/Plazma"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp" />
+
+
+
+    <Button
+        android:id="@+id/MinusYuz"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/PlusYuz"
+        android:layout_toEndOf="@+id/PlazmaText"
+        android:layout_toRightOf="@+id/PlazmaText"
+        android:layout_marginLeft="15dp"
+        android:text="-100" />
+
+    <Button
+        android:id="@+id/GazMinusOne"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="-1"
+        android:layout_below="@+id/Gaz"
+        android:layout_alignLeft="@+id/Home"
+        android:layout_alignStart="@+id/Home" />
+
+    <Button
+        android:id="@+id/GazPlusOne"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="+1"
+
+        android:layout_above="@+id/Home"
+        android:layout_alignLeft="@+id/PlusYuz"
+        android:layout_alignStart="@+id/PlusYuz"
+        android:layout_marginBottom="48dp" />
+
+
+
+
+
+
+    <Button
+        android:id="@+id/Home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anasayfa"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/MinusYuz"
+        android:layout_alignStart="@+id/MinusYuz"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp" />
+
+
+
+
+</RelativeLayout>

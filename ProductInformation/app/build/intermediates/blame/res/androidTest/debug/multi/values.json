@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
         "outputFile": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+=======
+        "outputFile": "/Users/rumeysal/Desktop/android/ProductInformation/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+>>>>>>> fe0d96722f5f539569ca237f8dd1e7bdf4241a4e
         "map": [
             {
                 "to": {

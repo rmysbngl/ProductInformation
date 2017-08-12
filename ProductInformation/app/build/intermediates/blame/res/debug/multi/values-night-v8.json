@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
         "outputFile": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+=======
+        "outputFile": "/Users/rumeysal/Desktop/android/ProductInformation/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+>>>>>>> fe0d96722f5f539569ca237f8dd1e7bdf4241a4e
         "map": [
             {
                 "to": {
