@@ -48,7 +48,7 @@ public class UrunTanitma extends AppCompatActivity {
     TextView QRID;
     EditText name;
     EditText KurumAdı;
-    String id;
+    public static String id;
     String urunadi;
     String kurumAdi;
     ArrayList<Bitmap> images=new ArrayList<>();         //taken from camera for describing product
@@ -67,54 +67,49 @@ public class UrunTanitma extends AppCompatActivity {
         QRID=(TextView) findViewById(R.id.QRID) ;
         name=(EditText) findViewById(R.id.Name) ;
 
-        //To scan QR code at the beginning
-        final AlertDialog.Builder dialog=new AlertDialog.Builder(UrunTanitma.this);
-        dialog.setMessage("QR code tanıt")
-                .setCancelable(true)
-                .setPositiveButton("Tanıt", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        IntentIntegrator integrator= new IntentIntegrator(UrunTanitma.this);
-                        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                        integrator.setPrompt("Scan");
-                        integrator.setCameraId(0);
-                        integrator.setBeepEnabled(false);
-                        integrator.setBarcodeImageEnabled(false);
-                        integrator.initiateScan();
-                        dialogInterface.cancel();
-
-
-
-                    }
-                })
-                .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent=new Intent(UrunTanitma.this,GirisEkrani.class);
-                        startActivity(intent);
-
-                    }
-                });
-
-        dialog.show();
-
-
-
 
     }
-
 
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        QRID.setText(id); //Setting product id
+    protected void onStart() {
+        super.onStart();
+        //To scan QR code at the beginning
+        if(id==null) {
+            final AlertDialog.Builder dialog = new AlertDialog.Builder(UrunTanitma.this);
+            dialog.setMessage("QR code tanıt")
+                    .setCancelable(true)
+                    .setPositiveButton("Tanıt", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            IntentIntegrator integrator = new IntentIntegrator(UrunTanitma.this);
+                            integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+                            integrator.setPrompt("Scan");
+                            integrator.setCameraId(0);
+                            integrator.setBeepEnabled(false);
+                            integrator.setBarcodeImageEnabled(false);
+                            integrator.initiateScan();
+                            dialogInterface.dismiss();
 
 
+                        }
+                    })
+                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent(UrunTanitma.this, GirisEkrani.class);
+                            startActivity(intent);
+
+                        }
+                    });
+
+            dialog.show();
+        }
 
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -150,6 +145,7 @@ public class UrunTanitma extends AppCompatActivity {
             viewPager.setAdapter(urunTanitmaAdapter);
 
 
+
         }
         //QR code reader part
         IntentResult result=IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
@@ -158,6 +154,7 @@ public class UrunTanitma extends AppCompatActivity {
                 Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_SHORT).show();
             }else{
                 id=result.getContents();
+                QRID.setText(id);
                 //scan for other id to understand this id is used before
                UrunRef.addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
