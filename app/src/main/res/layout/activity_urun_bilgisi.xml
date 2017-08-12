@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rumeysal.productinformation.UrunBilgisi">
+
+
+        <FrameLayout
+            android:id="@+id/FrameL"
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/photo"
+                android:layout_width="201dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginStart="80dp"
+                android:scaleType="centerCrop" />
+        </FrameLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_below="@+id/FrameL"
+        android:layout_above="@+id/Anasayfa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/ProductID"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:hint="ID"
+                android:inputType="text"/>
+
+            <EditText
+                android:id="@+id/ProductName"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Product Name"
+                android:inputType="textEmailAddress"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/KurumAdı"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:hint="Kurum Adı"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/TarihSorgula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="0.33"
+            android:onClick="UrunBilgi"
+            android:background="#008080"
+            android:padding="10dp"
+            android:text="İşlem Tarihi Sorgula" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Anasayfa"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#808080"
+        android:text="Anasayfa"
+        android:onClick="UrunBilgi"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout"
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout" />
+
+</RelativeLayout>

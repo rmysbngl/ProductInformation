@@ -1,0 +1,4 @@
+#Mon Jul 24 03:42:48 EEST 2017
+base.0=/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

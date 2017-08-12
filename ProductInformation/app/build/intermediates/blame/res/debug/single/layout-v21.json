@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/rumeysal/.android/build-cache/6c93f65132602288c6837ab192d483b38127115d/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/rumeysal/.android/build-cache/6c93f65132602288c6837ab192d483b38127115d/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/rumeysal/.android/build-cache/6c93f65132602288c6837ab192d483b38127115d/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/rumeysal/.android/build-cache/6c93f65132602288c6837ab192d483b38127115d/output/res/layout-v21/notification_action_tombstone.xml"
+    }
+]

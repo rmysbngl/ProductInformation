@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/rumeysal/.android/build-cache/6c93f65132602288c6837ab192d483b38127115d/output/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/rumeysal/.android/build-cache/6c93f65132602288c6837ab192d483b38127115d/output/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/rumeysal/.android/build-cache/6c93f65132602288c6837ab192d483b38127115d/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/rumeysal/Desktop/android/ProductInformation/ProductInformation/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/Users/rumeysal/.android/build-cache/6c93f65132602288c6837ab192d483b38127115d/output/res/drawable-v21/notification_action_background.xml"
+    }
+]
