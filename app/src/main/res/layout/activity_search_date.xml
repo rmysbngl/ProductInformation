@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rumeysal.productinformation.SearchDate">
+
+    <EditText
+        android:id="@+id/Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="72dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="183dp"
+        android:ems="10"
+        android:hint="yyyy/mm/dd"
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/Sorgula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
+        android:text="Sorgula"
+        android:onClick="Sorgula"
+        android:layout_below="@+id/Date"
+        android:layout_alignRight="@+id/Date"
+        android:layout_alignEnd="@+id/Date"
+        android:layout_marginRight="62dp"
+        android:layout_marginEnd="62dp" />
+
+</RelativeLayout>

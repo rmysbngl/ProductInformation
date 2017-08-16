@@ -45,10 +45,11 @@ public class ArduinoGiris extends AppCompatActivity {
    BluetoothSPP bt;
 
 
+
     static ArrayList<String> productIdForDate=new ArrayList<>();//bağlantıda olan Bluetooth un MAC address
 
     public void setProductIdForDate(ArrayList<String> productIdForDate) {
-        this.productIdForDate = productIdForDate;
+        ArduinoGiris.productIdForDate = productIdForDate;
     }
 
 
@@ -65,14 +66,18 @@ public class ArduinoGiris extends AppCompatActivity {
     public void ArduinoStart(View view) {
         switch(view.getId()){
             case R.id.Baslat:
-              bt.send("V"+(String.valueOf(SettingPart.getVacuumValue()))+"G"+(String.valueOf( SettingPart.getGazValue()))+"P"+(String.valueOf(SettingPart.getPlasmaValue())+"Z"), true);
+              bt.send("Z", true);
 
                 datRef.child("vacuum").setValue(SettingPart.getVacuumValue());                   //Firebase işlemi biten verileri girmek
                 datRef.child("plasma time").setValue(SettingPart.getPlasmaValue());
                 datRef.child("gaz value").setValue(SettingPart.getGazValue());
-                datRef.child("Date").setValue(currentdate);
 
 
+                String[] tarih=currentdate.split(" ");
+                datRef.child("Date").setValue(tarih[0]);
+                datRef.child("Exact Time").setValue(tarih[1]);
+                ProgressPart.setVacuumNew(SettingPart.getVacuumValue());
+                ProgressPart.setMinuteProgress(SettingPart.getPlasmaValue());
                 datRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -103,4 +108,11 @@ public class ArduinoGiris extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        bt.stopService();
+        Intent intent=new Intent(ArduinoGiris.this,BTConnect.class);
+        startActivity(intent);
+    }
 }

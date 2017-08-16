@@ -25,12 +25,12 @@
         android:id="@+id/Yeniurun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/UrunBilgisiGiris"
         android:onClick="Pages"
-        android:layout_alignRight="@+id/UrunBilgisiGiris"
+        android:layout_marginTop="47dp"
+        android:text="Urun Yerleştir"
         android:layout_below="@+id/UrunBilgisiGiris"
-        android:layout_marginTop="43dp"
-        android:text="Urun Yerleştir" />
+        android:layout_alignLeft="@+id/UrunTanitma"
+        android:layout_alignStart="@+id/UrunTanitma" />
 
     <Button
         android:id="@+id/UrunTanitma"
@@ -42,5 +42,19 @@
         android:layout_below="@+id/Yeniurun"
         android:layout_marginTop="42dp"
         android:text="Urun Tanıt" />
+
+    <Button
+        android:id="@+id/IslemTarihiSorgula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="İşlem Tarihi Sorgula"
+        android:onClick="Pages"
+        android:layout_below="@+id/UrunTanitma"
+        android:layout_alignLeft="@+id/UrunTanitma"
+        android:layout_alignStart="@+id/UrunTanitma"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp" />
+
 
 </RelativeLayout>

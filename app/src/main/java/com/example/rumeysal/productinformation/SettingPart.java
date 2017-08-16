@@ -35,9 +35,11 @@ import java.util.List;
 import java.util.UUID;
 import java.util.prefs.Preferences;
 
+import app.akexorcist.bluetotohspp.library.BluetoothSPP;
+
 public class SettingPart extends AppCompatActivity {
 
- BluetoothDevice device;
+    BluetoothSPP bt;
 
     Button plusOne;
     Button minusOne;
@@ -80,7 +82,7 @@ public class SettingPart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_part);
-
+        bt=(BTConnect.getBt());
       // device= (BluetoothDevice) ((ArduinoGiris) getApplication()).getDevice();
          plusOne=(Button) findViewById(R.id.PlusOne);
         minusOne = (Button) findViewById(R.id.MinusOne);
@@ -114,7 +116,7 @@ public class SettingPart extends AppCompatActivity {
                 gazValue=Integer.valueOf(String.valueOf(gaz.getText()));
                 gaz.setText(String.valueOf(gazValue));
 
-
+                bt.send("V"+(String.valueOf(SettingPart.getVacuumValue()))+"G"+(String.valueOf( SettingPart.getGazValue()))+"P"+(String.valueOf(SettingPart.getPlasmaValue())), true);
                 Intent intent = new Intent(SettingPart.this, ArduinoGiris.class);
                 startActivity(intent);
             }
@@ -190,8 +192,12 @@ public class SettingPart extends AppCompatActivity {
 
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(SettingPart.this,ArduinoGiris.class);
+        startActivity(intent);
+    }
 }
 
 

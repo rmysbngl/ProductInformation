@@ -13,9 +13,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class GirisEkrani extends AppCompatActivity {
-    Button UrunBilgisiGiris;
-    Button UrunYukleme;
-    Button UrunTanit;
+
     static String id;
 
     public static String getId() {
@@ -26,10 +24,46 @@ public class GirisEkrani extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giris_ekrani);
-        UrunBilgisiGiris =(Button) findViewById(R.id.UrunBilgisiGiris);
-        UrunBilgisiGiris.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+
+
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_SHORT).show();
+            } else {
+                id = result.getContents();
+                Toast.makeText(this, ""+id, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, ""+ id, Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(GirisEkrani.this,UrunBilgisi.class);
+                intent.putExtra("IDProduct",id);
+                startActivity(intent);
+
+
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+
+    public void Pages(View view) {
+        switch(view.getId()){
+            case(R.id.IslemTarihiSorgula):
+                Intent intent3=new Intent(GirisEkrani.this, SearchDate.class);
+                startActivity(intent3);
+                break;
+            case(R.id.UrunTanitma):
+
+                Intent intent=new Intent(GirisEkrani.this, UrunTanitma.class);
+                startActivity(intent);
+                break;
+
+            case(R.id.UrunBilgisiGiris):
                 AlertDialog.Builder dialogOlusturucu = new AlertDialog.Builder(GirisEkrani.this);
                 dialogOlusturucu.setMessage("Lütfen görmek istediğiniz ürünün QR kodunu tutunuz")
                         .setCancelable(false)
@@ -50,52 +84,12 @@ public class GirisEkrani extends AppCompatActivity {
                         .setNegativeButton("Anasayfa", null);
                 dialogOlusturucu.create().show();
 
-            }
-        });
+                break;
 
-
-        UrunTanit=(Button) findViewById(R.id.UrunTanitma);
-        UrunTanit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                Intent intent=new Intent(GirisEkrani.this, UrunTanitma.class);
-                startActivity(intent);
-
-            }
-        });
-        UrunYukleme=(Button) findViewById(R.id.Yeniurun);
-        UrunYukleme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(GirisEkrani.this, UrunYerlestir.class);
-                startActivity(intent);
-            }
-        });
-
-
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-                //Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_SHORT).show();
-            } else {
-                id = result.getContents();
-                Toast.makeText(this, ""+id, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(this, ""+ id, Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(GirisEkrani.this,UrunBilgisi.class);
-                intent.putExtra("IDProduct",id);
-                startActivity(intent);
-
-
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
+        case(R.id.Yeniurun):
+            Intent intent2=new Intent(GirisEkrani.this, UrunYerlestir.class);
+            startActivity(intent2);
+            break;
         }
     }
-
-
 }

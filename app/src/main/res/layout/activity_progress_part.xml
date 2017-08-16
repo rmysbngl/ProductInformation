@@ -6,8 +6,31 @@
     android:layout_height="match_parent"
     android:id="@+id/MainLayout"
     tools:context="com.example.rumeysal.productinformation.ProgressPart">
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/graph"
+        android:layout_width="370dp"
+        android:layout_height="370dp"></com.github.mikephil.charting.charts.LineChart>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="29dp"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:layout_below="@+id/graph"
+        android:layout_centerHorizontal="true" />
 
+    <Button
+        android:id="@+id/Anasayfa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anasayfa"
+        android:onClick="Click"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/graph"
+        android:layout_alignEnd="@+id/graph" />
 
 
 </RelativeLayout>
