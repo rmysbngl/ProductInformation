@@ -2,6 +2,7 @@ package com.example.rumeysal.productinformation;
 
 
 import android.graphics.Color;
+import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class ProgressPart extends AppCompatActivity  {
     static int t;
     BluetoothSPP bt;
          static float value;
+    int checkValue=0;
 
    public static  ArrayList<Integer> vac=new ArrayList<>();
 
@@ -97,6 +99,7 @@ private RelativeLayout mainLayout;
 
                    //
                         value=Float.valueOf(veri[1].trim());
+                  //  addEntry();
 
                     //Toast.makeText(ProgressPart.this, ""+Integer.valueOf(veri[1].trim()), Toast.LENGTH_SHORT).show();
               //  new DataPoint(0,Integer.valueOf(veri[1].trim()));}
@@ -130,11 +133,14 @@ private RelativeLayout mainLayout;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+
                             addEntry();
+
                         }
                     });
                     try {
                         Thread.sleep(350);
+                      //  Thread.sleep(60);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -165,7 +171,8 @@ private RelativeLayout mainLayout;
             data.addXValue("");
             data.addEntry(new Entry(value,set.getEntryCount()),0);
             mChart.notifyDataSetChanged();
-            mChart.setVisibleXRange(50);
+            mChart.setVisibleXRange(200);
+         // mChart.setVisibleXRange(2);
             mChart.moveViewToX(data.getXValCount());
         }
     }
@@ -177,7 +184,6 @@ private RelativeLayout mainLayout;
         set.setColor(Color.BLUE);
         set.setLineWidth(1f);
         set.setCircleSize(1f);
-
        // set.setFillAlpha(65);
         set.setCircleColor(Color.BLUE);
         set.setCircleColorHole(Color.BLUE);
@@ -185,6 +191,10 @@ private RelativeLayout mainLayout;
         set.setHighLightColor(Color.BLUE);
         set.setValueTextColor(Color.WHITE);
         set.setValueTextSize(10f);
+
+
+
+
 
 
         return set;
