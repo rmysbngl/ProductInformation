@@ -33,7 +33,7 @@ public class ProgressPart extends AppCompatActivity  {
     static int t;
     BluetoothSPP bt;
          static float value;
-    int checkValue=0;
+    int checkValue=1;
 
    public static  ArrayList<Integer> vac=new ArrayList<>();
 
@@ -133,8 +133,10 @@ private RelativeLayout mainLayout;
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
+                            if(value!=checkValue){
                             addEntry();
+                            value=checkValue;
+                            }
 
                         }
                     });
