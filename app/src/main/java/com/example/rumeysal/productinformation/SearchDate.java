@@ -45,12 +45,12 @@ public class SearchDate extends AppCompatActivity {
                 for(DataSnapshot obj:dataSnapshot.getChildren()){
                 //    Toast.makeText(SearchDate.this, ""+currentdate, Toast.LENGTH_SHORT).show();
                    // Toast.makeText(SearchDate.this, ""+obj.child("Date").getValue(), Toast.LENGTH_SHORT).show();
-                   /* if(((date.trim()).equals(obj.child("Date").getValue().toString().trim()))){
+                    if((dateFormat.format(date).equals(dateFormat.format(obj.child("Date").getValue().toString())))){
                         Toast.makeText(SearchDate.this, "you got it"+(obj.child("Current Products").child("Date").getValue()), Toast.LENGTH_SHORT).show();
 
                     }else{
                         Toast.makeText(SearchDate.this, "Bu tarihte işlem bulunamadı", Toast.LENGTH_SHORT).show();
-                    }*/
+                    }
                 }
             }
 
