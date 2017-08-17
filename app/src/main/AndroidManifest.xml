@@ -35,7 +35,8 @@
         <activity android:name=".UrunTanitma" />
         <activity android:name=".UrunOnay" />
         <activity android:name=".UrunBilgisi" />
-        <activity android:name=".BTConnect"></activity>
+        <activity android:name=".BTConnect" />
+        <activity android:name=".SearchDate"></activity>
     </application>
 
 </manifest>

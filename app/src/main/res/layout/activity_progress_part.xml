@@ -5,9 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/MainLayout"
+    android:background="#303030"
     tools:context="com.example.rumeysal.productinformation.ProgressPart">
 
 
+
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/graph"
+        android:layout_width="370dp"
+        android:layout_height="390dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/progressBar">
+
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:max="100"
+        android:visibility="visible"
+        tools:visibility="visible"
+            android:layout_marginTop="5dp"
+        android:progressDrawable="@drawable/values"
+        android:layout_above="@+id/Anasayfa"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/Anasayfa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anasayfa"
+        android:onClick="Click"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/graph"
+        android:layout_alignEnd="@+id/graph" />
+
+    <TextView
+        android:id="@+id/Values"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textColor="#fff"
+        android:text="Vacuum"
+        android:layout_marginTop="102dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/progressBar"
+        android:layout_alignEnd="@+id/progressBar" />
 
 
 </RelativeLayout>

@@ -13,34 +13,46 @@
         android:text="Urun Bilgisi"
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="136dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:onClick="Pages"
-        android:layout_marginLeft="128dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="101dp" />
+        android:layout_marginTop="105dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/Yeniurun"
+        android:layout_alignStart="@+id/Yeniurun" />
 
     <Button
         android:id="@+id/Yeniurun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/UrunBilgisiGiris"
         android:onClick="Pages"
-        android:layout_alignRight="@+id/UrunBilgisiGiris"
+        android:layout_marginTop="47dp"
+        android:text="Urun Yerleştir"
         android:layout_below="@+id/UrunBilgisiGiris"
-        android:layout_marginTop="43dp"
-        android:text="Urun Yerleştir" />
+        android:layout_alignLeft="@+id/UrunTanitma"
+        android:layout_alignStart="@+id/UrunTanitma" />
 
     <Button
         android:id="@+id/UrunTanitma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="Pages"
-        android:layout_alignLeft="@+id/UrunBilgisiGiris"
-        android:layout_alignStart="@+id/UrunBilgisiGiris"
+        android:layout_marginTop="46dp"
+        android:text="Urun Tanıt"
         android:layout_below="@+id/Yeniurun"
-        android:layout_marginTop="42dp"
-        android:text="Urun Tanıt" />
+        android:layout_alignLeft="@+id/IslemTarihiSorgula"
+        android:layout_alignStart="@+id/IslemTarihiSorgula" />
+
+    <Button
+        android:id="@+id/IslemTarihiSorgula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:text="İşlem Tarihi Sorgula"
+        android:onClick="Pages"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_below="@+id/UrunTanitma"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>
