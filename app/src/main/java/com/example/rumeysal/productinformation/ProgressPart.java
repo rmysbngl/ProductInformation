@@ -15,6 +15,7 @@ import android.view.View;
 
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -35,7 +36,7 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 
 
 public class ProgressPart extends AppCompatActivity  {
-   int counter=0;
+    static int counter=0;
     BluetoothSPP bt;
     static float value=0;
     int checkValue=1;
@@ -43,15 +44,15 @@ public class ProgressPart extends AppCompatActivity  {
     MyCountDownTimer CDT;
     static int minuteProgress;
     int minute;
-
-
+    TextView değer;
+    public static  ArrayList<Float> vac=new ArrayList<>();
     public static void setVacuumNew(int vacuumNew) {
         VacuumNew = vacuumNew;
     }
 
     static int VacuumNew;
 
-   public static  ArrayList<Integer> vac=new ArrayList<>();
+
 
     private LineChart mChart;
     @Override
@@ -61,7 +62,7 @@ public class ProgressPart extends AppCompatActivity  {
         timer=(ProgressBar) findViewById(R.id.progressBar) ;
         minute=minuteProgress;
         bt=(BTConnect.getBt());
-
+        değer=(TextView) findViewById(R.id.Values) ;
         mChart=(LineChart) findViewById(R.id.graph);
         mChart.setDescription("");
         mChart.setNoDataText("No data");
@@ -77,6 +78,13 @@ public class ProgressPart extends AppCompatActivity  {
         LineData data=new LineData();
         data.setValueTextColor(Color.WHITE);
         mChart.setData(data);
+
+
+        Legend box=mChart.getLegend();
+        box.setPosition(Legend.LegendPosition.LEFT_OF_CHART_CENTER);
+        box.setXEntrySpace(5);
+        box.setYEntrySpace(5);
+        box.setTextColor(Color.BLUE);
 
 
         Legend l=mChart.getLegend();
@@ -105,8 +113,6 @@ public class ProgressPart extends AppCompatActivity  {
                 Log.d("Message",message);
                String[]veri= message.split(":");
                 if(veri[0].equals("BT")){
-
-                    vac.add(Integer.valueOf(veri[1].trim()));
 
                         value=Float.valueOf(veri[1].trim());
 
@@ -142,7 +148,10 @@ public class ProgressPart extends AppCompatActivity  {
                         public void run() {
                             if(value!=checkValue){
 
+                                createSet().setValueTextSize(10f);
                                  addEntry();
+                                    değer.setText(String.valueOf(value));
+                                vac.add(value);
                                 value=checkValue;
 
 
@@ -173,14 +182,21 @@ public class ProgressPart extends AppCompatActivity  {
 
     public void addEntry(){
         LineData data=mChart.getLineData();
+
         if(data!=null){
             LineDataSet set =data.getDataSetByIndex(0);
+
             if(set==null){
                 set=createSet();
                 data.addDataSet(set);
+
             }
             data.addXValue("");
             data.addEntry(new Entry(value,set.getEntryCount()),0);
+            data.setValueTextSize(10f);
+
+            //createSet().setValueTextSize(10f);
+
             mChart.notifyDataSetChanged();
            mChart.setVisibleXRange(200);
 
@@ -190,6 +206,10 @@ public class ProgressPart extends AppCompatActivity  {
     private LineDataSet createSet(){
         LineDataSet set=new LineDataSet(null,"Vacuum");
 
+
+
+
+
         set.setColor(Color.BLUE);
         set.setLineWidth(1f);
         set.setCircleSize(1f);
@@ -198,9 +218,7 @@ public class ProgressPart extends AppCompatActivity  {
         set.setFillColor(Color.BLUE);
         set.setHighLightColor(Color.BLUE);
         set.setValueTextColor(Color.WHITE);
-        set.setValueTextSize(15f);
-
-
+        set.setValueTextSize(0f);
 
 
 

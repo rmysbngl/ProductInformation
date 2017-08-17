@@ -100,6 +100,8 @@ public class ArduinoGiris extends AppCompatActivity {
                 Intent intent = new Intent(ArduinoGiris.this, ProgressPart.class);
                 startActivity(intent);
                 break;
+
+
             case R.id.ayarlar:
                 Intent intent2 = new Intent(ArduinoGiris.this, SettingPart.class);
                 startActivity(intent2);

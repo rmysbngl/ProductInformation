@@ -8,8 +8,11 @@
     tools:context="com.example.rumeysal.productinformation.ProgressPart">
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/graph"
+
         android:layout_width="370dp"
-        android:layout_height="370dp"></com.github.mikephil.charting.charts.LineChart>
+        android:layout_height="370dp">
+
+    </com.github.mikephil.charting.charts.LineChart>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -31,6 +34,17 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/graph"
         android:layout_alignEnd="@+id/graph" />
+
+    <TextView
+        android:id="@+id/Values"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:textColor="#fff"
+        android:text="Beni görüyı musun"
+        android:layout_marginTop="102dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/progressBar"
+        android:layout_alignEnd="@+id/progressBar" />
 
 
 </RelativeLayout>

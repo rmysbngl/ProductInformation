@@ -54,9 +54,13 @@ public class GirisEkrani extends AppCompatActivity {
     public void Pages(View view) {
         switch(view.getId()){
             case(R.id.IslemTarihiSorgula):
-                Intent intent3=new Intent(GirisEkrani.this, SearchDate.class);
-                startActivity(intent3);
+               // Intent intent3=new Intent(GirisEkrani.this, SearchDate.class);
+                //startActivity(intent3);
+                AlertDialog.Builder dialog=new AlertDialog.Builder(GirisEkrani.this);
+                dialog.setMessage("Bu özellik aktif değildir")
+                        .setCancelable(true);
                 break;
+
             case(R.id.UrunTanitma):
 
                 Intent intent=new Intent(GirisEkrani.this, UrunTanitma.class);
