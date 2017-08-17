@@ -59,6 +59,7 @@ public class GirisEkrani extends AppCompatActivity {
                 AlertDialog.Builder dialog=new AlertDialog.Builder(GirisEkrani.this);
                 dialog.setMessage("Bu özellik aktif değildir")
                         .setCancelable(true);
+                dialog.show();
                 break;
 
             case(R.id.UrunTanitma):
