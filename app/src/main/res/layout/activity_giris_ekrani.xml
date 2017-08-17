@@ -16,8 +16,11 @@
         android:onClick="Pages"
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="136dp"
+
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/UrunTanitma"
+        android:layout_alignStart="@+id/UrunTanitma" />
+
 
     <Button
         android:id="@+id/Yeniurun"
@@ -34,23 +37,32 @@
         android:id="@+id/UrunTanitma"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+
         android:background="@drawable/uruntanitbtn"
         android:onClick="Pages"
+
+        android:layout_marginTop="46dp"
         android:layout_below="@+id/Yeniurun"
-        android:layout_alignLeft="@+id/Yeniurun"
-        android:layout_alignStart="@+id/Yeniurun" />
+        android:layout_alignLeft="@+id/IslemTarihiSorgula"
+        android:layout_alignStart="@+id/IslemTarihiSorgula" />
+
 
     <Button
         android:id="@+id/IslemTarihiSorgula"
         android:layout_width="304dp"
         android:layout_height="wrap_content"
+
         android:layout_marginTop="42dp"
         android:background="@drawable/islemtrhbtn"
+
         android:onClick="Pages"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:layout_below="@+id/UrunTanitma"
-        android:layout_alignLeft="@+id/UrunTanitma"
-        android:layout_alignStart="@+id/UrunTanitma" />
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 
 </RelativeLayout>
