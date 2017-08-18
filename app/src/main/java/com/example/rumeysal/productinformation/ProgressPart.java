@@ -34,14 +34,13 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 
 public class ProgressPart extends AppCompatActivity  {
     BluetoothSPP bt;
-    static float value=0;
+    static float value;
     int checkValue=1;
     ProgressBar timer;
     MyCountDownTimer CDT;
-    static int minuteProgress;
+    static int minuteProgress;          //Arduino Giriş sayfasından gelen süre değeri
     int minute;
     TextView değer;
-    public static  ArrayList<Float> vac=new ArrayList<>();
     private LineChart mChart;
 
 
@@ -49,15 +48,17 @@ public class ProgressPart extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress_part);
-        timer=(ProgressBar) findViewById(R.id.progressBar) ;
+        timer=(ProgressBar) findViewById(R.id.progressBar) ;            //Progress bar ın kurulumu
         timer.setProgress(100);
         minute=minuteProgress;
         bt=(BTConnect.getBt());
         değer=(TextView) findViewById(R.id.Values) ;
+        value=0;           //TODO: Tüpün içindeki değer her zaman sabitse bu değeri ona göre kur
+
+       //Grafiğin kurulması
         mChart=(LineChart) findViewById(R.id.graph);
         mChart.setDescription("");
         mChart.setNoDataText("No data");
-
         mChart.setHighlightEnabled(true);
         mChart.setTouchEnabled(true);
         mChart.setDragEnabled(true);
@@ -85,21 +86,21 @@ public class ProgressPart extends AppCompatActivity  {
         Yl.setStartAtZero(false);
         Yl.setAxisMaxValue(0f);
         Yl.setAxisMinValue(-100f);
-
         YAxis Yaxis=mChart.getAxisRight();
         Yaxis.setEnabled(false);
 
+
+        //Bluetooth üzerinden veri almak için
         bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() {
             public void onDataReceived(byte[] data, String message) {
                 Log.d("Message",message);
-               String[]veri= message.split(":");
+               String[]veri= message.split(":");  //TODO: Eğer vacuum değeri alınıyorsa, alınan verinin formu  (BT: "vacuum değeri" ) şeklinde olmalıdır. iki nokta ve BT kısmı önemli
                 if(veri[0].equals("BT")){
-
-                        value=Float.valueOf(veri[1].trim());
+                        value=Float.valueOf(veri[1].trim());        //alınan veri 'value' ya kurulup sonra 'value' plot ediliyor
 
                    }
-                if((message.trim()).equals("finish")){
-                    bt.stopService();
+                if((message.trim()).equals("finish")){     //TODO: Bittiğini anlamak için 'finish' komutu gönderilmeli
+                    bt.stopService();                      //veri alımı bittiği için bluetooth servisi duruyor
                     timer.setProgress(100);
                     CDT=new MyCountDownTimer(minuteProgress,1000);
                     CDT.start();
@@ -127,13 +128,10 @@ public class ProgressPart extends AppCompatActivity  {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            if(value!=checkValue){
-
-                                createSet().setValueTextSize(10f);
-                                 addEntry();
-                                    değer.setText(String.valueOf(value));
-                                vac.add(value);
-                                value=checkValue;
+                            if(value!=checkValue){          //Grafiğe yeni bir değerin girdiğini farketmesi için yapıldı. Diğer türlü aynı veriden 3 kere giriliyordu
+                                 addEntry();            //Grafiğe veriyi yazdırmak için
+                                 değer.setText(String.valueOf(value));           //ekranda yazılan veriyi göstermek için
+                                 value=checkValue;
 
 
                             }
@@ -145,7 +143,7 @@ public class ProgressPart extends AppCompatActivity  {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }while (value!=(VacuumNew+1));
+                }while (value!=(VacuumNew+1));          //Ayarlanan vakum değerinde grafiğin yazımının bitmesi için //TODO: eğer orda yazandan daha farklı bir değerde çalışma ihtimali varsa cihazdan alınan veriye göre düzenlenmesi lazım
 
             }
         }).start();
@@ -155,7 +153,7 @@ public class ProgressPart extends AppCompatActivity  {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        bt.stopService();
+        bt.stopService();       //uygulama kapandığında bluetooth u kapatmak için
     }
 
 
@@ -167,15 +165,15 @@ public class ProgressPart extends AppCompatActivity  {
         if(data!=null){
             LineDataSet set =data.getDataSetByIndex(0);
 
-            if(set==null){
+            if(set==null){          //veri yokkende grafiği kurmak için
                 set=createSet();
                 data.addDataSet(set);
 
             }
             data.addXValue("");
-            data.addEntry(new Entry(value,set.getEntryCount()),0);
+            data.addEntry(new Entry(value,set.getEntryCount()),0);          //yeni eklenen verinin grafiğe eklenmesi için
             mChart.notifyDataSetChanged();
-            mChart.setVisibleXRange(200);
+            mChart.setVisibleXRange(200);           //Bütün verilerin aynı grafikte görünmesi için. Eğer veri alındıkça kayması isteniyorsa burdaki sayının  küçüklmesi gerek. Mesela 10'a filan kurulablir.
             mChart.moveViewToX(data.getXValCount());
         }
     }
@@ -196,7 +194,7 @@ public class ProgressPart extends AppCompatActivity  {
 
     public void Click(View view) {
      switch (view.getId()){
-            case(R.id.Anasayfa):
+            case(R.id.Anasayfa):                    //Tekrar anaekrana dönmek için
                 Intent intent=new Intent(ProgressPart.this,GirisEkrani.class);
                 startActivity(intent);
                 break;
@@ -217,7 +215,6 @@ public class ProgressPart extends AppCompatActivity  {
 
         @Override
         public void onFinish() {
-            Toast.makeText(ProgressPart.this, "Task completed", Toast.LENGTH_SHORT).show();
             timer.setProgress(0);
             AlertDialog.Builder dialog=new AlertDialog.Builder(ProgressPart.this);
             dialog.setMessage("Task Completed")
@@ -225,11 +222,11 @@ public class ProgressPart extends AppCompatActivity  {
                     .setPositiveButton("Go Back Main Page", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent=new Intent(ProgressPart.this,GirisEkrani.class);
+                            Intent intent=new Intent(ProgressPart.this,GirisEkrani.class);          //Anasayfaya dönmek içn
                             startActivity(intent);
                         }
                     })
-                    .setNegativeButton("View Screen",null);
+                    .setNegativeButton("View Screen",null);             //Grafiği görmek için
             dialog.show();
 
         }
@@ -240,6 +237,7 @@ public class ProgressPart extends AppCompatActivity  {
         ProgressPart.minuteProgress = minuteProgress;
     }
 
+    //Geri tuşuna basınca bozulmaları önlemek için geri tuşu direkt giriş sayfasına yönlendiriyor
     @Override
     public void onBackPressed() {
         super.onBackPressed();

@@ -10,11 +10,11 @@ import java.util.ArrayList;
  */
 
 public class Product {
-    private ArrayList<Uri> productImages;
     private String urunadı;
     private String id;
     private String kurumadı;
 
+    //Yeni ürün gelidğinde ürün verilerini tutmak için
 
     public Product(String id, String urunadı) {
         this.urunadı = urunadı;
@@ -22,7 +22,6 @@ public class Product {
     }
 
     public Product(String id, String urunadı, String kurumadı) {
-        this.productImages = productImages;
         this.urunadı = urunadı;
         this.id = id;
         this.kurumadı = kurumadı;
@@ -49,11 +48,5 @@ public class Product {
         return kurumadı;
     }
 
-    public void setProductImages(ArrayList<Uri> productImages) {
-        this.productImages = productImages;
-    }
 
-    public ArrayList<Uri> getProductImages() {
-        return productImages;
-    }
 }

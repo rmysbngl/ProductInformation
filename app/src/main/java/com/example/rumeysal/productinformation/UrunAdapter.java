@@ -17,6 +17,9 @@ import java.util.List;
  * Created by rumeysal on 7/24/17.
  */
 
+
+//Urun bİlgisi içindeki tarih sorgulama için yapılmış ListView adapteri
+
 public class UrunAdapter extends ArrayAdapter<DateAndVacuum> {
 
     List<DateAndVacuum> array;

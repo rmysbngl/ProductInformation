@@ -8,6 +8,8 @@ public class ProductInProgress {
     String urunid;
     String name;
 
+    //Cihaza yerleştirilen ürünlerin listesi için
+
     public ProductInProgress(String urunid, String name) {
         this.urunid = urunid;
         this.name = name;

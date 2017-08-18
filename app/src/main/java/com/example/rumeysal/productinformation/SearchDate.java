@@ -36,7 +36,7 @@ public class SearchDate extends AppCompatActivity {
 
 
 
-    
+    // bu kısım hala yapılmadı isteğe göre düzenlenecek
     public void TarihSorgula(){
 
 

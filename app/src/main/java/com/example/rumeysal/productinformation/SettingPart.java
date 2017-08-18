@@ -37,21 +37,19 @@ import java.util.prefs.Preferences;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 
+
+//TODO: BU kısımda +/- 1 gibi buttonlar için güzel bir tasarım oluşuturulmalı
 public class SettingPart extends AppCompatActivity {
 
     BluetoothSPP bt;
 
-    Button plusOne;
-    Button minusOne;
-    Button plusYuz;
-    Button minusYuz;
-    Button gazPlusOne;
-    Button gazMinusOne;
-    Button arduinoGiris;
+
     EditText vakum;
     EditText plazma;
     EditText gaz;
 
+
+    //Cihazın Default value ları
     static int vacuumValue=-84;
     static int plasmaValue=1500;
     static int gazValue=10;
@@ -59,6 +57,82 @@ public class SettingPart extends AppCompatActivity {
 
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_setting_part);
+        bt=(BTConnect.getBt());
+        vakum = (EditText) findViewById(R.id.VakumText);
+        plazma = (EditText) findViewById(R.id.PlazmaText);
+        gaz = (EditText) findViewById(R.id.GazText);
+
+
+        vakum.setText(String.valueOf(vacuumValue));
+        plazma.setText(String.valueOf(plasmaValue));
+        gaz.setText(String.valueOf(gazValue));
+
+
+
+
+
+    }
+
+    @Override
+    public void onBackPressed() {               //Geri tuşuna basınca bozulmaları önlemek için
+        super.onBackPressed();
+        Intent intent=new Intent(SettingPart.this,ArduinoGiris.class);
+        startActivity(intent);
+    }
+
+    public void SetClick(View view) {
+        switch(view.getId()){
+            case(R.id.PlusOne):
+                vacuumValue=Integer.valueOf(String.valueOf(vakum.getText()));       // editText değişirse veriyi tutmak için
+                vacuumValue=vacuumValue+1;                                  //vakumu +1 artırmak
+                vakum.setText(String.valueOf(vacuumValue));
+                break;
+            case (R.id.MinusOne):
+                vacuumValue=Integer.valueOf(String.valueOf(vakum.getText()));
+                vacuumValue = vacuumValue - 1;
+                vakum.setText(String.valueOf(vacuumValue));
+
+                break;
+            case(R.id.MinusYuz):
+                plasmaValue=Integer.valueOf(String.valueOf(plazma.getText()));
+                plasmaValue = plasmaValue - 100;
+                plazma.setText(String.valueOf(plasmaValue));
+                break;
+            case(R.id.PlusYuz):
+                plasmaValue = Integer.valueOf(String.valueOf(plazma.getText()));
+                plasmaValue = plasmaValue + 100;
+                plazma.setText(String.valueOf(plasmaValue));
+                break;
+            case(R.id.GazMinusOne):
+                gazValue=Integer.valueOf(String.valueOf(gaz.getText()));
+                gazValue = gazValue - 1;
+                gaz.setText(String.valueOf(gazValue));
+                break;
+            case(R.id.GazPlusOne):
+                gazValue=Integer.valueOf(String.valueOf(gaz.getText()));
+                gazValue = gazValue + 1;
+                gaz.setText(String.valueOf(gazValue));
+                break;
+            case(R.id.Anasayfa):
+                vacuumValue=Integer.valueOf(String.valueOf(vakum.getText()));           //en son haliyle data göndermek için
+                vakum.setText(String.valueOf(vacuumValue));
+                plasmaValue=Integer.valueOf(String.valueOf(plazma.getText()));
+                plazma.setText(String.valueOf(plasmaValue));
+                gazValue=Integer.valueOf(String.valueOf(gaz.getText()));
+                gaz.setText(String.valueOf(gazValue));
+
+                //TODO: ARduino ya gönderilen verilerin kısımları bunları da Ömer'e göster
+                bt.send("V"+(String.valueOf(SettingPart.getVacuumValue()))+"G"+(String.valueOf( SettingPart.getGazValue()))+"P"+(String.valueOf(SettingPart.getPlasmaValue())), true);
+                Intent intent = new Intent(SettingPart.this, ArduinoGiris.class);
+                startActivity(intent);
+                break;
+
+        }
+    }
     public static int getVacuumValue() {
 
         return vacuumValue;
@@ -73,131 +147,6 @@ public class SettingPart extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting_part);
-        bt=(BTConnect.getBt());
-      // device= (BluetoothDevice) ((ArduinoGiris) getApplication()).getDevice();
-         plusOne=(Button) findViewById(R.id.PlusOne);
-        minusOne = (Button) findViewById(R.id.MinusOne);
-        plusYuz = (Button) findViewById(R.id.PlusYuz);
-        minusYuz = (Button) findViewById(R.id.MinusYuz);
-        gazMinusOne = (Button) findViewById(R.id.GazMinusOne);
-        gazPlusOne = (Button) findViewById(R.id.GazPlusOne);
-        arduinoGiris = (Button) findViewById(R.id.Home);
-        vakum = (EditText) findViewById(R.id.VakumText);
-        plazma = (EditText) findViewById(R.id.PlazmaText);
-        gaz = (EditText) findViewById(R.id.GazText);
-
-
-        vakum.setText(String.valueOf(vacuumValue));
-        plazma.setText(String.valueOf(plasmaValue));
-        gaz.setText(String.valueOf(gazValue));
-
-
-
-
-
-
-        arduinoGiris.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                vacuumValue=Integer.valueOf(String.valueOf(vakum.getText()));           //en son haliyle data göndermek için
-                vakum.setText(String.valueOf(vacuumValue));
-                plasmaValue=Integer.valueOf(String.valueOf(plazma.getText()));
-                plazma.setText(String.valueOf(plasmaValue));
-                gazValue=Integer.valueOf(String.valueOf(gaz.getText()));
-                gaz.setText(String.valueOf(gazValue));
-
-                bt.send("V"+(String.valueOf(SettingPart.getVacuumValue()))+"G"+(String.valueOf( SettingPart.getGazValue()))+"P"+(String.valueOf(SettingPart.getPlasmaValue())), true);
-                Intent intent = new Intent(SettingPart.this, ArduinoGiris.class);
-                startActivity(intent);
-            }
-        });
-
-
-      plusOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-             //   ((ArduinoGiris) getApplication()).sendData("a");
-
-                vacuumValue=Integer.valueOf(String.valueOf(vakum.getText()));       // editText değişirse veriyi tutmak için
-                vacuumValue=vacuumValue+1;                                  //vakumu +1 artırmak
-                vakum.setText(String.valueOf(vacuumValue));
-
-            }
-        });
-
-        minusOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                vacuumValue=Integer.valueOf(String.valueOf(vakum.getText()));
-                vacuumValue = vacuumValue - 1;
-                vakum.setText(String.valueOf(vacuumValue));
-
-            }
-        });
-
-
-        plusYuz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                plasmaValue = Integer.valueOf(String.valueOf(plazma.getText()));
-                plasmaValue = plasmaValue + 100;
-                plazma.setText(String.valueOf(plasmaValue));
-            }
-        });
-
-        minusYuz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                plasmaValue=Integer.valueOf(String.valueOf(plazma.getText()));
-                plasmaValue = plasmaValue - 100;
-                plazma.setText(String.valueOf(plasmaValue));
-            }
-        });
-
-
-        gazPlusOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                gazValue=Integer.valueOf(String.valueOf(gaz.getText()));
-                gazValue = gazValue + 1;
-                gaz.setText(String.valueOf(gazValue));
-            }
-        });
-
-        gazMinusOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                gazValue=Integer.valueOf(String.valueOf(gaz.getText()));
-                gazValue = gazValue - 1;
-                gaz.setText(String.valueOf(gazValue));
-            }
-        });
-
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent=new Intent(SettingPart.this,ArduinoGiris.class);
-        startActivity(intent);
-    }
 }
 
 
