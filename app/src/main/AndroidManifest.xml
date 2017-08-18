@@ -19,7 +19,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".UrunYerlestir" />
@@ -36,7 +36,24 @@
         <activity android:name=".UrunOnay" />
         <activity android:name=".UrunBilgisi" />
         <activity android:name=".BTConnect" />
-        <activity android:name=".SearchDate"></activity>
+        <activity android:name=".SearchDate" />
+        <activity android:name=".StartingScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AcilisEkrani"
+            android:label="@string/title_activity_acilis_ekrani"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
