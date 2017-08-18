@@ -41,7 +41,7 @@ public class UrunYerlestir extends AppCompatActivity {
    static ArrayList<String> productIdForDate=new ArrayList<>();         //to getting prdocut id to check later
     ArduinoGiris ag = new ArduinoGiris();                       //to send products id to arduino page
 
-    //static public BluetoothSPP bt;
+
     static List<ProductInProgress> islemUrun=new ArrayList<>();          //Şu an işlem gören ürünler
 
     FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -51,7 +51,6 @@ public class UrunYerlestir extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //bt = new BluetoothSPP(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urun_yerlestir);
         urunyerlestir=(ListView) findViewById(R.id.EklenenUrunler);
@@ -159,6 +158,7 @@ public class UrunYerlestir extends AppCompatActivity {
 
 
 
+    //Eklenen ürünü üstten menu ile seçiyorsun //TODO: eğer istenilirse burada menu yerine button da oluşturulabilir.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

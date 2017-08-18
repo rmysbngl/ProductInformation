@@ -14,7 +14,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class GirisEkrani extends AppCompatActivity {
 
-    static String id;
+    static String id;               //Product ID for Urun Bilgisi class
 
     public static String getId() {
         return id;
@@ -29,6 +29,10 @@ public class GirisEkrani extends AppCompatActivity {
 
 
     }
+
+
+    //QR code part to get product ID
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -43,7 +47,6 @@ public class GirisEkrani extends AppCompatActivity {
                 intent.putExtra("IDProduct",id);
                 startActivity(intent);
 
-
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -51,23 +54,25 @@ public class GirisEkrani extends AppCompatActivity {
     }
 
 
+
     public void Pages(View view) {
         switch(view.getId()){
-            case(R.id.IslemTarihiSorgula):
+            case(R.id.IslemTarihiSorgula):          //TODO: Bu kısım hala net değil, çıkartılabilir
                // Intent intent3=new Intent(GirisEkrani.this, SearchDate.class);
                 //startActivity(intent3);
                 AlertDialog.Builder dialog=new AlertDialog.Builder(GirisEkrani.this);
                 dialog.setMessage("Bu özellik aktif değildir")
                         .setCancelable(true);
+                dialog.show();
                 break;
 
-            case(R.id.UrunTanitma):
+            case(R.id.UrunTanitma):         //Sisteme yeni giriş yapmak istendiğinde gidilecek sayfa
 
                 Intent intent=new Intent(GirisEkrani.this, UrunTanitma.class);
                 startActivity(intent);
                 break;
 
-            case(R.id.UrunBilgisiGiris):
+            case(R.id.UrunBilgisiGiris):                //Hazır olan bir ürünün bilgilerini öğrenmek için önce QR code kısmı çalışıyor sonro diğer class a geçiş yapılıyor
                 AlertDialog.Builder dialogOlusturucu = new AlertDialog.Builder(GirisEkrani.this);
                 dialogOlusturucu.setMessage("Lütfen görmek istediğiniz ürünün QR kodunu tutunuz")
                         .setCancelable(false)
@@ -90,7 +95,7 @@ public class GirisEkrani extends AppCompatActivity {
 
                 break;
 
-        case(R.id.Yeniurun):
+        case(R.id.Yeniurun):        //Cihaz çalışırken, cihaza yerleşecek ürünlere yönlendirir.
             Intent intent2=new Intent(GirisEkrani.this, UrunYerlestir.class);
             startActivity(intent2);
             break;

@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//Kaydedilen ürünün onayı için .//TODO: bu sayfanın designı kesinlikle yapılmalı
 public class UrunOnay extends AppCompatActivity {
     Button butAnasayfa;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

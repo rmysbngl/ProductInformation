@@ -17,6 +17,8 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 import app.akexorcist.bluetotohspp.library.BluetoothState;
 import app.akexorcist.bluetotohspp.library.DeviceList;
 
+
+// BLUETOOTH CONNECTION KISMI
 public class BTConnect extends AppCompatActivity {
     static BluetoothSPP bt;
     TextView textStatus;
@@ -73,9 +75,6 @@ public class BTConnect extends AppCompatActivity {
         int id = item.getItemId();
         if(id == R.id.add_product) {
             bt.setDeviceTarget(BluetoothState.DEVICE_OTHER);
-			/*
-			if(bt.getServiceState() == BluetoothState.STATE_CONNECTED)
-    			bt.disconnect();*/
             Intent intent = new Intent(getApplicationContext(), DeviceList.class);
             startActivityForResult(intent, BluetoothState.REQUEST_CONNECT_DEVICE);
         }
@@ -108,12 +107,10 @@ public class BTConnect extends AppCompatActivity {
             if(resultCode == Activity.RESULT_OK)
                 bt.connect(data);
 
-            //ss.setSenData(sendData);
         } else if(requestCode == BluetoothState.REQUEST_ENABLE_BT) {
             if(resultCode == Activity.RESULT_OK) {
                 bt.setupService();
                 bt.startService(BluetoothState.DEVICE_ANDROID);
-                //  setup();
             } else {
                 Toast.makeText(getApplicationContext()
                         , "Bluetooth was not enabled."

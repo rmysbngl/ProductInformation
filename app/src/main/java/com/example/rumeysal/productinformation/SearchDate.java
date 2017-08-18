@@ -2,6 +2,8 @@ package com.example.rumeysal.productinformation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,13 +16,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class SearchDate extends AppCompatActivity {
-    DateFormat dateFormat=new SimpleDateFormat("yyyy/MM/dd");
-    String date;
     EditText enterDate;
-
+    TextWatcher tw;
     DatabaseReference tarih= FirebaseDatabase.getInstance().getReference("Processed Part");
 
     @Override
@@ -29,15 +30,15 @@ public class SearchDate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_date);
         enterDate=(EditText) findViewById(R.id.Date);
+        enterDate.addTextChangedListener(tw);
+
+           }
 
 
 
-
-
-    }
+    // bu kısım hala yapılmadı isteğe göre düzenlenecek
     public void TarihSorgula(){
-        date=enterDate.getText().toString();
-        //final String currentdate=dateFormat.format(date);
+
 
         tarih.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -45,12 +46,12 @@ public class SearchDate extends AppCompatActivity {
                 for(DataSnapshot obj:dataSnapshot.getChildren()){
                 //    Toast.makeText(SearchDate.this, ""+currentdate, Toast.LENGTH_SHORT).show();
                    // Toast.makeText(SearchDate.this, ""+obj.child("Date").getValue(), Toast.LENGTH_SHORT).show();
-                    if((dateFormat.format(date).equals(dateFormat.format(obj.child("Date").getValue().toString())))){
+                /*    if((dateFormat.format(date).equals(dateFormat.format(obj.child("Date").getValue().toString())))){
                         Toast.makeText(SearchDate.this, "you got it"+(obj.child("Current Products").child("Date").getValue()), Toast.LENGTH_SHORT).show();
 
                     }else{
                         Toast.makeText(SearchDate.this, "Bu tarihte işlem bulunamadı", Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
                 }
             }
 

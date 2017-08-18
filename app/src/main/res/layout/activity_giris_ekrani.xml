@@ -4,55 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgphoto"
     tools:context="com.example.rumeysal.productinformation.GirisEkrani">
 
     <Button
         android:id="@+id/UrunBilgisiGiris"
-        android:layout_width="wrap_content"
+        android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:text="Urun Bilgisi"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/urunblgbtn"
+        android:onClick="Pages"
         tools:layout_editor_absoluteX="133dp"
         tools:layout_editor_absoluteY="136dp"
-        android:onClick="Pages"
-        android:layout_marginTop="105dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/Yeniurun"
-        android:layout_alignStart="@+id/Yeniurun" />
 
-    <Button
-        android:id="@+id/Yeniurun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="Pages"
-        android:layout_marginTop="47dp"
-        android:text="Urun Yerleştir"
-        android:layout_below="@+id/UrunBilgisiGiris"
+        android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/UrunTanitma"
         android:layout_alignStart="@+id/UrunTanitma" />
 
+
+    <Button
+        android:id="@+id/Yeniurun"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/urunyrlstrbtn"
+        android:onClick="Pages"
+        android:layout_below="@+id/UrunBilgisiGiris"
+        android:layout_alignLeft="@+id/UrunBilgisiGiris"
+        android:layout_alignStart="@+id/UrunBilgisiGiris" />
+
     <Button
         android:id="@+id/UrunTanitma"
-        android:layout_width="wrap_content"
+        android:layout_width="304dp"
         android:layout_height="wrap_content"
+
+        android:background="@drawable/uruntanitbtn"
         android:onClick="Pages"
+
         android:layout_marginTop="46dp"
-        android:text="Urun Tanıt"
         android:layout_below="@+id/Yeniurun"
         android:layout_alignLeft="@+id/IslemTarihiSorgula"
         android:layout_alignStart="@+id/IslemTarihiSorgula" />
 
+
     <Button
         android:id="@+id/IslemTarihiSorgula"
-        android:layout_width="wrap_content"
+        android:layout_width="304dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:text="İşlem Tarihi Sorgula"
+
+        android:layout_marginTop="42dp"
+        android:background="@drawable/islemtrhbtn"
+
         android:onClick="Pages"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:layout_below="@+id/UrunTanitma"
+
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
 
 
 </RelativeLayout>

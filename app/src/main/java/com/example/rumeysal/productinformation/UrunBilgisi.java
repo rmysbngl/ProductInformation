@@ -41,19 +41,19 @@ import java.util.List;
 
 public class UrunBilgisi extends AppCompatActivity {
     EditText ProductName, ID, KurumAdı;
-    public static List<DateAndVacuum> your_array = new ArrayList<DateAndVacuum>();
+    public static List<DateAndVacuum> your_array = new ArrayList<DateAndVacuum>();          //Tarih sorgulama kısmına basınca oluşturulacak kısım
     Bundle bundle;
     public String id;
-    UrunAdapter adapter;
+    UrunAdapter adapter;                    //tarih sorgularken kullanılan Adapter
     ListView urunList;
     static ArrayList <String> keys=new ArrayList<>();
     FirebaseDatabase database=FirebaseDatabase.getInstance();
-    DatabaseReference ref=database.getReference("Urunler");
+    DatabaseReference ref=database.getReference("Urunler");                     //Firebase kısmı ürünün bilgilerine ulaşmak için
     DatabaseReference tarihRef=database.getReference("Processed Part");
     StorageReference PhotoDownload= FirebaseStorage.getInstance().getReference("Urunler");
     String productcondition;
-    static ArrayList<Uri> image=new ArrayList<>();
-    ProductShowAdapter productshow;
+    static ArrayList<Uri> image=new ArrayList<>();              //ürünün resmini Firebaseden çektikten sonra kurmak için
+    ProductShowAdapter productshow;                 //Ürün resimlerini göstertecek adapter
 
 
     @Override
@@ -65,7 +65,7 @@ public class UrunBilgisi extends AppCompatActivity {
         ID=(EditText) findViewById(R.id.ProductID) ;
         KurumAdı=(EditText)  findViewById(R.id.KurumAdı);
         bundle=getIntent().getExtras();
-        id=bundle.getString("IDProduct");
+        id=bundle.getString("IDProduct");           //URUnün ID si Giriş ekranındaki QR code scanner dan alınıyor
         image.clear();
         your_array.clear();
 
@@ -79,7 +79,7 @@ public class UrunBilgisi extends AppCompatActivity {
                     productcondition="OK";
                     ID.setText(id);
 
-
+                    //Firebaseden ürünün isim Kurum adı, resim gibi bilgilerini çekmek için yapıldı
                     ProductName.setText(obj.child("name").getValue().toString());
                     KurumAdı.setText(obj.child("Kurum Adı").getValue().toString());
                     for (int i=0; i<obj.child("Images").getChildrenCount();i++){
@@ -102,13 +102,10 @@ public class UrunBilgisi extends AppCompatActivity {
                         keys.add(DateRef.getValue().toString());
                     }
 
-
-
-
                 }
 
 
-
+                    //Eğer öyle bir ürün yoksa oluşturuluyor
                 if(productcondition==null){
                     Toast.makeText(UrunBilgisi.this, "Ürün Bulunamadı", Toast.LENGTH_SHORT).show();
 
@@ -132,6 +129,7 @@ public class UrunBilgisi extends AppCompatActivity {
 
 
 
+    //Ürünün resmini sayfada kayar şekilde kurmak için
     public void creatCustomDialog(Context context){
         View dialogView = View.inflate(context,R.layout.date_and_vacuum, null);
         urunList=dialogView.findViewById(R.id.UrunList);
@@ -153,6 +151,7 @@ public class UrunBilgisi extends AppCompatActivity {
             case R.id.TarihSorgula:
                 creatCustomDialog(UrunBilgisi.this);
 
+                //Firebaseden o ürünün işlem geçirdiği tarihleri sorgulamak için
                 tarihRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -168,7 +167,7 @@ public class UrunBilgisi extends AppCompatActivity {
                     }
                 });
 
-
+                //Eğer herhangi bi işlemden geçmemişse kurması için   //TODO: Bu yazılarında daha güzel çıkması için ListView designlarına bakılabilir
                 if(your_array.size()==0){
                     urunList.setEmptyView(findViewById(android.R.id.empty));
                 }
