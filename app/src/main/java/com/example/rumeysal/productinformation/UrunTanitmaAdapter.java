@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
+//Urun tanıtırken resimlerin kayar biçimde kurulması için oluşturulan sayfa
 public class UrunTanitmaAdapter extends PagerAdapter {
 
    private ArrayList<Bitmap> images;

@@ -42,7 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//bu sınıf QR kod uygulamasıyla yeniden düzenlenecek
+// Sisteme yeni ürün girişi yapıldığı zaman kullanılacak
 public class UrunTanitma extends AppCompatActivity {
     private static int Camera_Request=1;
     TextView QRID;
@@ -53,6 +53,9 @@ public class UrunTanitma extends AppCompatActivity {
     String kurumAdi;
     ArrayList<Bitmap> images=new ArrayList<>();         //taken from camera for describing product
 
+
+
+   //yeni eklenen ürünler için Firebase part
     FirebaseDatabase urun=FirebaseDatabase.getInstance();
     DatabaseReference UrunRef=urun.getReference().child("Urunler");                 //saving products to firebase
     static List<Product> product=new ArrayList<Product>();                                 //adding product features
@@ -110,7 +113,7 @@ public class UrunTanitma extends AppCompatActivity {
 
     }
 
-
+//ürünün resmini çekmek için menu oluşturuldu. //TODO: eğer istenilirse resim eklemek için button da oluşturulabilir. Bu kısım Sorulacak
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -143,8 +146,6 @@ public class UrunTanitma extends AppCompatActivity {
             viewPager=(ViewPager) findViewById(R.id.Pager);
             urunTanitmaAdapter=new UrunTanitmaAdapter(UrunTanitma.this,images);
             viewPager.setAdapter(urunTanitmaAdapter);
-
-
 
         }
         //QR code reader part

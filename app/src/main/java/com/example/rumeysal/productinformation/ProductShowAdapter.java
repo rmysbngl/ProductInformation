@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+//ürün bilgisini aldığımız kısım için resimleri kurmayı sağlayan adapter
 public class ProductShowAdapter extends PagerAdapter {
 
     private ArrayList<Uri> images;

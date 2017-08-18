@@ -18,6 +18,8 @@ import java.util.List;
  * Created by rumeysal on 7/25/17.
  */
 
+
+//Cihaza yerleştirilen ürünlerin ListView eyerleşmesi için gerekli Adapter
 public class UrunYerlestirAdapter extends ArrayAdapter<ProductInProgress> {
 
     Context context;

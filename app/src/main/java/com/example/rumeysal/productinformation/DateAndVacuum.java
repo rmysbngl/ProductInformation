@@ -11,7 +11,7 @@ public class DateAndVacuum {
     private  String GasValue;
     private  String PlasmaValue;
 
-
+       //URUN bilgisi kısmınta tarih sorgularken gelen tarihi ve diğer değerleri arraylist e aktarmak için
     public DateAndVacuum(String date, String vacuumValue, String gasValue, String plasmaValue) {
         this.date = date;
         VacuumValue = vacuumValue;
