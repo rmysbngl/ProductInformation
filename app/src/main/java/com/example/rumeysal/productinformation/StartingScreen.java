@@ -1,6 +1,7 @@
 package com.example.rumeysal.productinformation;
 
 import android.content.Intent;
+
 import android.os.AsyncTask;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -10,14 +11,19 @@ import android.widget.Button;
 
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
+//import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+
 public class StartingScreen extends AppCompatActivity {
 
+
     CircularProgressButton Button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_screen);
+
 
         Button = (CircularProgressButton)findViewById(R.id.Baslat);
         Button.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +56,7 @@ public class StartingScreen extends AppCompatActivity {
         });
 
     }
+
 }
 
  
