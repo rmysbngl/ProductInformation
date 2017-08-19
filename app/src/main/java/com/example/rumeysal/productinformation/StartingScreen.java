@@ -14,8 +14,8 @@ public class StartingScreen extends AppCompatActivity {
     }
 
     public void Cilis(View view) {
-
         Intent intent=new Intent(StartingScreen.this,GirisEkrani.class);
-        startActivity(intent);}
 
+        startActivity(intent);
+    }
 }
