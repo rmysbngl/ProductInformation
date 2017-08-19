@@ -79,12 +79,7 @@ public class UrunTanitma extends AppCompatActivity {
         super.onStart();
         //To scan QR code at the beginning
         if(id==null) {
-            final AlertDialog.Builder dialog = new AlertDialog.Builder(UrunTanitma.this);
-            dialog.setMessage("QR code tanıt")
-                    .setCancelable(true)
-                    .setPositiveButton("Tanıt", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+
                             IntentIntegrator integrator = new IntentIntegrator(UrunTanitma.this);
                             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                             integrator.setPrompt("Scan");
@@ -92,21 +87,8 @@ public class UrunTanitma extends AppCompatActivity {
                             integrator.setBeepEnabled(false);
                             integrator.setBarcodeImageEnabled(false);
                             integrator.initiateScan();
-                            dialogInterface.dismiss();
 
 
-                        }
-                    })
-                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent(UrunTanitma.this, GirisEkrani.class);
-                            startActivity(intent);
-
-                        }
-                    });
-
-            dialog.show();
         }
 
 
@@ -156,6 +138,8 @@ public class UrunTanitma extends AppCompatActivity {
             }else{
                 id=result.getContents();
                 QRID.setText(id);
+
+
                 //scan for other id to understand this id is used before
                UrunRef.addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
@@ -218,6 +202,7 @@ public class UrunTanitma extends AppCompatActivity {
                                 Toast.makeText(UrunTanitma.this, "It is succefull", Toast.LENGTH_SHORT).show();
 
                                 ProductInformation.child("Images").push().setValue(downloadUrl);
+                                id=null;
 
 
 
@@ -231,7 +216,7 @@ public class UrunTanitma extends AppCompatActivity {
 
                 }
 
-                Intent intent=new Intent(UrunTanitma.this,UrunOnay.class);          //Urun Onaylandı Page
+                Intent intent=new Intent(UrunTanitma.this,GirisEkrani.class);          //Urun Onaylandı Page
                 startActivity(intent);
 
 
