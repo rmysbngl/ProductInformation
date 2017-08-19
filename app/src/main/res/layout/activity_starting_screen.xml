@@ -15,6 +15,7 @@
         android:background="@drawable/brand"
         android:layout_marginTop="91dp"
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:background="@drawable/brand" />
 
     <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
@@ -27,6 +28,8 @@
         android:layout_height="wrap_content"
         android:onClick="Cilis"/>
 =======
+=======
+>>>>>>> parent of 2e1493e... start screen
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -59,6 +62,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
+<<<<<<< HEAD
+>>>>>>> parent of 2e1493e... start screen
+=======
 >>>>>>> parent of 2e1493e... start screen
 
 </RelativeLayout>
