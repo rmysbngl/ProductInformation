@@ -70,26 +70,13 @@ public class GirisEkrani extends AppCompatActivity {
                 break;
 
             case(R.id.UrunBilgisiGiris):                //Hazır olan bir ürünün bilgilerini öğrenmek için önce QR code kısmı çalışıyor sonro diğer class a geçiş yapılıyor
-                AlertDialog.Builder dialogOlusturucu = new AlertDialog.Builder(GirisEkrani.this);
-                dialogOlusturucu.setMessage("Lütfen görmek istediğiniz ürünün QR kodunu tutunuz")
-                        .setCancelable(false)
-                        .setPositiveButton("Urun Tara", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                IntentIntegrator integrator = new IntentIntegrator(GirisEkrani.this);
-                                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                                integrator.setPrompt("Scan");
-                                integrator.setCameraId(0);
-                                integrator.setBeepEnabled(false);
-                                integrator.setBarcodeImageEnabled(false);
-                                integrator.initiateScan();
-
-
-                            }
-                        })
-                        .setNegativeButton("Anasayfa", null);
-                dialogOlusturucu.create().show();
-
+                    IntentIntegrator integrator = new IntentIntegrator(GirisEkrani.this);
+                    integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+                    integrator.setPrompt("Scan");
+                    integrator.setCameraId(0);
+                    integrator.setBeepEnabled(false);
+                    integrator.setBarcodeImageEnabled(false);
+                    integrator.initiateScan();
                 break;
 
         case(R.id.Yeniurun):        //Cihaz çalışırken, cihaza yerleşecek ürünlere yönlendirir.
