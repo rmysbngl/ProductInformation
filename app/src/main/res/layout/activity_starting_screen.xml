@@ -18,7 +18,6 @@
         android:layout_centerHorizontal="true" />
 
 
-    tools:context="com.example.rumeysal.productinformation.StartingScreen">
 
 
     <!--<Button
