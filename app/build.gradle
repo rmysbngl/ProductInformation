@@ -38,6 +38,7 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     compile 'me.zhanghai.android.materialprogressbar:library:1.1.6'
     compile 'com.android.support:design:26.+'
+    compile "br.com.simplepass:loading-button-android:1.7.2"
     testCompile 'junit:junit:4.12'
 }
 
