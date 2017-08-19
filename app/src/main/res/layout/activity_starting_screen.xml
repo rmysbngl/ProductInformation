@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.rumeysal.productinformation.StartingScreen"
-    android:background="@drawable/webphoto">
+    android:background="@drawable/webphoto"
+    >
 
     <ImageView
         android:id="@+id/imageView3"

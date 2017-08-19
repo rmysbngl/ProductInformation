@@ -3,6 +3,7 @@ package com.example.rumeysal.productinformation;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.IdRes;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 public class StartingScreen extends AppCompatActivity {
+
 
     CircularProgressButton Button;
 
@@ -51,8 +53,9 @@ public class StartingScreen extends AppCompatActivity {
 
         });
     }
-
     ;
+
+
 
     public void Cilis(View view) {
 

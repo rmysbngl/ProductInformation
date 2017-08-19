@@ -25,9 +25,6 @@ public class GirisEkrani extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giris_ekrani);
 
-
-
-
     }
 
 
@@ -100,5 +97,12 @@ public class GirisEkrani extends AppCompatActivity {
             startActivity(intent2);
             break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(GirisEkrani.this,StartingScreen.class );
+        startActivity(intent);
+        super.onBackPressed();
     }
 }
