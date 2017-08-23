@@ -92,7 +92,6 @@ public class UrunBilgisi extends AppCompatActivity {
                                 productshow = new ProductShowAdapter(UrunBilgisi.this, image);
                                 photo.setAdapter(productshow);
 
-
                             }
                         });
                     }
@@ -167,7 +166,8 @@ public class UrunBilgisi extends AppCompatActivity {
                     }
                 });
 
-                //Eğer herhangi bi işlemden geçmemişse kurması için   //TODO: Bu yazılarında daha güzel çıkması için ListView designlarına bakılabilir
+                //Eğer herhangi bi işlemden geçmemişse kurması için
+                // TODO: Bu yazılarında daha güzel çıkması için ListView designlarına bakılabilir
                 if(your_array.size()==0){
                     urunList.setEmptyView(findViewById(android.R.id.empty));
                 }

@@ -1,79 +1,35 @@
 {
   "project_info": {
-    "project_number": "508940783102",
-    "firebase_url": "https://urunbilgisi-598c4.firebaseio.com",
-    "project_id": "urunbilgisi-598c4",
-    "storage_bucket": "urunbilgisi-598c4.appspot.com"
+    "project_number": "81765630555",
+    "firebase_url": "https://urun-bilgisi.firebaseio.com",
+    "project_id": "urun-bilgisi",
+    "storage_bucket": "urun-bilgisi.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:508940783102:android:2185705e0886d6e7",
-        "android_client_info": {
-          "package_name": "com.example.rumeysal.urnbilgileri"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "508940783102-icka2ojgurajqpgplkp8j7f359317tpr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.rumeysal.urnbilgileri",
-            "certificate_hash": "ddf1625f3267534b52d2e147cc0ee1944796be9a"
-          }
-        },
-        {
-          "client_id": "508940783102-cptq8pm6mqprh881g3nprbqridmqs3lo.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDIjiTa2sio7uDYmziaYqsJZVWm7X6A5K8"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "508940783102-cptq8pm6mqprh881g3nprbqridmqs3lo.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:508940783102:android:206a2db682ad2453",
+        "mobilesdk_app_id": "1:81765630555:android:206a2db682ad2453",
         "android_client_info": {
           "package_name": "com.example.rumeysal.productinformation"
         }
       },
       "oauth_client": [
         {
-          "client_id": "508940783102-91ccbiemohv06r67js8qo2u9e6u19p00.apps.googleusercontent.com",
+          "client_id": "81765630555-85f9vor3pe8cgo0lsm02amuk3qbk0t6t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.rumeysal.productinformation",
-            "certificate_hash": "ddf1625f3267534b52d2e147cc0ee1944796be9a"
+            "certificate_hash": "17027cf9d0ed3e2393e5956391e1bce310eaef6f"
           }
         },
         {
-          "client_id": "508940783102-cptq8pm6mqprh881g3nprbqridmqs3lo.apps.googleusercontent.com",
+          "client_id": "81765630555-e34iukgk22pb8daoic8bp8hv8vd5oart.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDIjiTa2sio7uDYmziaYqsJZVWm7X6A5K8"
+          "current_key": "AIzaSyCLA819EVCmCaVA0k2Ob9fNv5iBDrwh2JA"
         }
       ],
       "services": {
@@ -84,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "508940783102-cptq8pm6mqprh881g3nprbqridmqs3lo.apps.googleusercontent.com",
+              "client_id": "81765630555-e34iukgk22pb8daoic8bp8hv8vd5oart.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

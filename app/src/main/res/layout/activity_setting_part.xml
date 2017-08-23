@@ -75,18 +75,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gaz Text"
-        android:layout_alignTop="@+id/GazPlusOne"
+        android:layout_alignBottom="@+id/GazPlusOne"
         android:layout_alignRight="@+id/VakumText"
-        android:layout_alignEnd="@+id/VakumText"
-        android:layout_marginTop="24dp" />
+        android:layout_alignEnd="@+id/VakumText" />
 
     <Button
         android:id="@+id/PlusOne"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="+1"
         android:onClick="SetClick"
-
+        android:background="@drawable/plusicon"
         android:layout_alignBottom="@+id/VakumText"
         android:layout_toLeftOf="@+id/Plazma"
         android:layout_toStartOf="@+id/Plazma" />
@@ -98,16 +96,17 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:onClick="SetClick"
-        android:text="-1"
         android:layout_alignBottom="@+id/VakumText"
         android:layout_alignLeft="@+id/MinusYuz"
-        android:layout_alignStart="@+id/MinusYuz" />
+        android:layout_alignStart="@+id/MinusYuz"
+        android:background="@drawable/minusicon"/>
 
 
 
     <Button
         android:id="@+id/PlusYuz"
         android:layout_width="60dp"
+        android:background="@drawable/plusicon"
         android:layout_height="wrap_content"
         android:text="+100"
         android:layout_centerVertical="true"
@@ -124,6 +123,7 @@
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:onClick="SetClick"
+        android:background="@drawable/minusicon"
         android:layout_alignTop="@+id/PlusYuz"
         android:layout_toEndOf="@+id/PlazmaText"
         android:layout_toRightOf="@+id/PlazmaText"
@@ -135,7 +135,7 @@
         android:layout_width="50dp"
         android:onClick="SetClick"
         android:layout_height="wrap_content"
-        android:text="-1"
+        android:background="@drawable/minusicon"
         android:layout_below="@+id/Gaz"
         android:layout_alignLeft="@+id/Home"
         android:layout_alignStart="@+id/Home" />
@@ -144,12 +144,12 @@
         android:id="@+id/GazPlusOne"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="+1"
+        android:background="@drawable/plusicon"
         android:onClick="SetClick"
+        android:layout_marginBottom="30dp"
         android:layout_above="@+id/Home"
         android:layout_alignLeft="@+id/PlusYuz"
-        android:layout_alignStart="@+id/PlusYuz"
-        android:layout_marginBottom="48dp" />
+        android:layout_alignStart="@+id/PlusYuz" />
 
 
 

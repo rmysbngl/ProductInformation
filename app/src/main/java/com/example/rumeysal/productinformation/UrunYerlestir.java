@@ -34,7 +34,7 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 
 
 public class UrunYerlestir extends AppCompatActivity {
-
+    Button addProduct1;
     ListView urunyerlestir;
     Button arduinoGiris;
     String id="0";
@@ -67,6 +67,19 @@ public class UrunYerlestir extends AppCompatActivity {
             }
         });
 
+        addProduct1 = (Button) findViewById(R.id.add_product1);
+        addProduct1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                IntentIntegrator integrator= new IntentIntegrator(UrunYerlestir.this);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+                integrator.setPrompt("");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(false);
+                integrator.initiateScan();
+            }
+        });
 
 
     }
@@ -159,22 +172,22 @@ public class UrunYerlestir extends AppCompatActivity {
 
 
     //Eklenen ürünü üstten menu ile seçiyorsun //TODO: eğer istenilirse burada menu yerine button da oluşturulabilir.
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+   // @Override
+    /* public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_urunyerlestir, menu);
         return true;
-    }
+    }*/
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+        public boolean onOptionsItemSelected(MenuItem item) {
         int selectedItem = item.getItemId();
 
         switch (selectedItem) {
             case R.id.add_product:
                 IntentIntegrator integrator= new IntentIntegrator(this);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                integrator.setPrompt("Scan");
+                integrator.setPrompt("");
                 integrator.setCameraId(0);
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(false);
