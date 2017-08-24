@@ -92,7 +92,6 @@ public class UrunTanitma extends AppCompatActivity {
     }
 
     //ürünün resmini çekmek için menu oluşturuldu. //TODO: eğer istenilirse resim eklemek için button da oluşturulabilir. Bu kısım Sorulacak
-    //Buralar silinecek tmm denerim :D biyerde daha vardı onuda button yap ürün bilgisindeydi sanırım o yazıyı kaldırmak istedim daha sonra başka bir şey yazdı orda ne gibi uzundu biraz orayaya da
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -146,8 +145,7 @@ public class UrunTanitma extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if (dataSnapshot.child(id).exists()) {
-                            Toast.makeText(UrunTanitma.this, "This ID was used before ", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(UrunTanitma.this, GirisEkrani.class);    //If it is used go back
+                            Toast.makeText(UrunTanitma.this, "This ID was used before ", Toast.LENGTH_SHORT).show(); Intent intent = new Intent(UrunTanitma.this, GirisEkrani.class);    //If it is used go back
                             startActivity(intent);
                             id = null;
                         }
@@ -223,7 +221,4 @@ public class UrunTanitma extends AppCompatActivity {
 
 
     }
-    // geri dönme tuşu denendi ama olmadı.
-
-
 }

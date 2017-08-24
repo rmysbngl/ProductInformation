@@ -72,7 +72,7 @@ public class GirisEkrani extends AppCompatActivity {
             case(R.id.UrunBilgisiGiris):                //Hazır olan bir ürünün bilgilerini öğrenmek için önce QR code kısmı çalışıyor sonro diğer class a geçiş yapılıyor
                     IntentIntegrator integrator = new IntentIntegrator(GirisEkrani.this);
                     integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                    integrator.setPrompt("Scan");
+                    integrator.setPrompt("");
                     integrator.setCameraId(0);
                     integrator.setBeepEnabled(false);
                     integrator.setBarcodeImageEnabled(false);
