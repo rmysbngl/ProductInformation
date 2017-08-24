@@ -63,13 +63,13 @@ public class GirisEkrani extends AppCompatActivity {
                 dialog.show();
                 break;
 
-            case(R.id.UrunTanitma):         //Sisteme yeni giriş yapmak istendiğinde gidilecek sayfa
+            case(R.id.UrunTanitma):     //Sisteme yeni giriş yapmak istendiğinde gidilecek sayfa
 
                 Intent intent=new Intent(GirisEkrani.this, UrunTanitma.class);
                 startActivity(intent);
                 break;
 
-            case(R.id.UrunBilgisiGiris):                //Hazır olan bir ürünün bilgilerini öğrenmek için önce QR code kısmı çalışıyor sonro diğer class a geçiş yapılıyor
+            case(R.id.UrunBilgisiGiris):     //Hazır olan bir ürünün bilgilerini öğrenmek için önce QR code kısmı çalışıyor sonro diğer class a geçiş yapılıyor
                     IntentIntegrator integrator = new IntentIntegrator(GirisEkrani.this);
                     integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                     integrator.setPrompt("");

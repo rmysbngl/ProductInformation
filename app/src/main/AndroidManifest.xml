@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GirisEkrani"
+        <activity
+            android:name=".GirisEkrani"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 
             >
@@ -26,10 +27,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".UrunYerlestir" />
-        <activity android:name=".ArduinoGiris">
+        <activity android:name=".ArduinoGiris"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"
-                    />
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
 
@@ -47,7 +48,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
