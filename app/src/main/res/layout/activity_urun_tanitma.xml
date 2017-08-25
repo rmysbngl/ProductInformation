@@ -7,33 +7,33 @@
     tools:context="com.example.rumeysal.productinformation.UrunTanitma"
     android:background="@drawable/bg_uruntanitimsonunsonu">
 
+
     <android.support.v4.view.ViewPager
         android:id="@+id/Pager"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp"
+        android:clickable="true"
+        android:onClick="ClickedImage"
         android:layout_marginTop="12dp"
         />
 
-
     <TextView
         android:id="@+id/QRID"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="45dp"
-        android:layout_below="@+id/Pager"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
         android:background="@drawable/name_input"
         android:hint="  ID"
-        />
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/PhotoAdd"
+        android:layout_toLeftOf="@+id/Onay"
+        android:layout_toStartOf="@+id/Onay" />
 
     <EditText
         android:id="@+id/Name"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/QRID"
         android:layout_alignStart="@+id/QRID"
@@ -47,7 +47,7 @@
 
     <EditText
         android:id="@+id/Kurum"
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/Name"
         android:layout_alignStart="@+id/Name"
@@ -59,15 +59,31 @@
         android:hint="Kurum Bilgisi"
         android:inputType="textPersonName" />
 
-    <Button
+    <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
         android:id="@+id/Onay"
         android:layout_width="100dp"
         android:layout_height="55dp"
+        android:text="Onayla"
+   
         android:background="@drawable/onybutton"
-        android:onClick="Clicked"
+        app:spinning_bar_color="#fff"
+        app:spinning_bar_padding="6dp"
+        app:spinning_bar_width="4dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/PhotoAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_menu_camera"
+        android:onClick="AddPhotoImage"
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp"
+        android:layout_below="@+id/Pager"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>
