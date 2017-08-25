@@ -6,8 +6,10 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +44,8 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+
 
 // Sisteme yeni ürün girişi yapıldığı zaman kullanılacak
 public class UrunTanitma extends AppCompatActivity {
@@ -51,6 +56,9 @@ public class UrunTanitma extends AppCompatActivity {
     public static String id;
     String urunadi;
     String kurumAdi;
+    ViewPager viewPager;
+    UrunTanitmaAdapter urunTanitmaAdapter;
+   CircularProgressButton butoon;
     ArrayList<Bitmap> images=new ArrayList<>();         //taken from camera for describing product
 
 
@@ -66,9 +74,80 @@ public class UrunTanitma extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urun_tanitma);
-
+        viewPager=(ViewPager) findViewById(R.id.Pager);
         QRID=(TextView) findViewById(R.id.QRID) ;
         name=(EditText) findViewById(R.id.Name) ;
+        butoon=(CircularProgressButton) findViewById(R.id.Onay);
+        butoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final StorageReference[] storePhoto = new StorageReference[1];
+                KurumAdı=(EditText) findViewById(R.id.Kurum);
+                urunadi=name.getText().toString().trim();
+                kurumAdi=KurumAdı.getText().toString().trim();
+
+                AsyncTask<String, String, String> demoLogin =new AsyncTask<String, String, String>() {
+                    @Override
+                    protected String doInBackground(String... strings) {
+                        product.add(new Product(id,urunadi,kurumAdi));
+
+
+                        for(int i=0; i< product.size(); i++){
+
+                            final DatabaseReference ProductInformation=UrunRef.child(product.get(i).getId());
+                            ProductInformation.child("name").setValue(product.get(i).getUrunadı());
+                            ProductInformation.child("ID").setValue(product.get(i).getId());
+                            ProductInformation.child("Kurum Adı").setValue(product.get(i).getKurumadı());
+
+                            for( int j=0; j<images.size();j++){         //Store image on Firebase Storoge
+                                storePhoto[0] = FirebaseStorage.getInstance().getReference("Urunler").child(product.get(i).getId()).child("images"+j);
+                                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                images.get(j).compress(Bitmap.CompressFormat.JPEG, 20, baos);
+                                byte[] data = baos.toByteArray();
+                                UploadTask uploadTask = storePhoto[0].putBytes(data);
+                                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        final String downloadUrl = taskSnapshot.getDownloadUrl().toString();
+
+
+                                        ProductInformation.child("Images").push().setValue(downloadUrl);
+                                        id=null;
+
+
+                                    }
+                                });
+
+                            }
+
+
+                        }
+
+
+
+                        return "done";
+                    }
+
+
+                    @Override
+                    protected void onPostExecute(String s) {
+                        super.onPostExecute(s);
+                        if(s.equals("done")){
+                            Toast.makeText(UrunTanitma.this, "It is succesfull", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(UrunTanitma.this, GirisEkrani.class);
+                        startActivity(i);
+                        id=null;
+
+                        }
+                    }
+                };
+
+
+                butoon.startAnimation();
+                demoLogin.execute();
+            }
+        });
+
 
 
     }
@@ -79,12 +158,7 @@ public class UrunTanitma extends AppCompatActivity {
         super.onStart();
         //To scan QR code at the beginning
         if(id==null) {
-            final AlertDialog.Builder dialog = new AlertDialog.Builder(UrunTanitma.this);
-            dialog.setMessage("QR code tanıt")
-                    .setCancelable(true)
-                    .setPositiveButton("Tanıt", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
+
                             IntentIntegrator integrator = new IntentIntegrator(UrunTanitma.this);
                             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                             integrator.setPrompt("Scan");
@@ -92,48 +166,14 @@ public class UrunTanitma extends AppCompatActivity {
                             integrator.setBeepEnabled(false);
                             integrator.setBarcodeImageEnabled(false);
                             integrator.initiateScan();
-                            dialogInterface.dismiss();
 
-
-                        }
-                    })
-                    .setNegativeButton("Geri", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent(UrunTanitma.this, GirisEkrani.class);
-                            startActivity(intent);
-
-                        }
-                    });
-
-            dialog.show();
         }
 
 
 
     }
 
-    //ürünün resmini çekmek için menu oluşturuldu. //TODO: eğer istenilirse resim eklemek için button da oluşturulabilir. Bu kısım Sorulacak
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_urunyerlestir, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int selectedItem = item.getItemId();
 
-        switch (selectedItem) {
-            case R.id.add_product:              //while choosing plus add image for product
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent,Camera_Request);
-
-                break;
-        }
-
-        return true;
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -141,11 +181,11 @@ public class UrunTanitma extends AppCompatActivity {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             //Setting pager to show images taken from product
             images.add(photo) ;
-            ViewPager viewPager;
-            UrunTanitmaAdapter urunTanitmaAdapter;
-            viewPager=(ViewPager) findViewById(R.id.Pager);
             urunTanitmaAdapter=new UrunTanitmaAdapter(UrunTanitma.this,images);
             viewPager.setAdapter(urunTanitmaAdapter);
+
+
+
 
         }
         //QR code reader part
@@ -153,6 +193,9 @@ public class UrunTanitma extends AppCompatActivity {
         if(result!=null){
             if(result.getContents()==null){
                 Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_SHORT).show();
+                id=null;
+                Intent intent=new Intent(UrunTanitma.this,GirisEkrani.class);
+                startActivity(intent);
             }else{
                 id=result.getContents();
                 QRID.setText(id);
@@ -185,64 +228,11 @@ public class UrunTanitma extends AppCompatActivity {
 
 
 
-    public void Clicked(View view) {
-        switch(view.getId()){
-            case R.id.Onay:             //Saving product if everything is ok
-                StorageReference storePhoto;
-
-                KurumAdı=(EditText) findViewById(R.id.Kurum);
-                urunadi=name.getText().toString().trim();
-                kurumAdi=KurumAdı.getText().toString().trim();
-                product.add(new Product(id,urunadi,kurumAdi));
 
 
 
-                for(int i=0; i< product.size(); i++){
-
-                    final DatabaseReference ProductInformation=UrunRef.child(product.get(i).getId());
-                    ProductInformation.child("name").setValue(product.get(i).getUrunadı());
-                    ProductInformation.child("ID").setValue(product.get(i).getId());
-                    ProductInformation.child("Kurum Adı").setValue(product.get(i).getKurumadı());
-
-                    for( int j=0; j<images.size();j++){         //Store image on Firebase Storoge
-                        storePhoto= FirebaseStorage.getInstance().getReference("Urunler").child(product.get(i).getId()).child("images"+j);
-                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                        images.get(j).compress(Bitmap.CompressFormat.JPEG, 20, baos);
-                        byte[] data = baos.toByteArray();
-                        UploadTask uploadTask = storePhoto.putBytes(data);
-                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                final String downloadUrl = taskSnapshot.getDownloadUrl().toString();
-
-                                Toast.makeText(UrunTanitma.this, "It is succefull", Toast.LENGTH_SHORT).show();
-
-                                ProductInformation.child("Images").push().setValue(downloadUrl);
-
-
-
-                            }
-                        });
-
-
-                    }
-
-
-
-                }
-
-                Intent intent=new Intent(UrunTanitma.this,UrunOnay.class);          //Urun Onaylandı Page
-                startActivity(intent);
-
-
-                break;
-
-        }
-
-
-
-
+    public void AddPhotoImage(View view) {
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent,Camera_Request);
     }
-
-
 }
