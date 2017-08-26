@@ -4,106 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rumeysal.productinformation.UrunBilgisi">
+    tools:context="com.example.rumeysal.productinformation.UrunBilgisi"
+    android:background="@drawable/bg_uruntanitimsonunsonu">
 
 
         <FrameLayout
             android:id="@+id/FrameL"
             android:layout_width="match_parent"
-            android:layout_height="250dp">
+            android:layout_height="250dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/photo"
                 android:layout_width="201dp"
                 android:layout_height="200dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="80dp"
                 android:layout_marginStart="80dp"
+                android:layout_marginTop="10dp"
                 android:scaleType="centerCrop" />
+
         </FrameLayout>
 
+        <EditText
+            android:id="@+id/ProductID"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:background="@drawable/name_input"
+            android:hint="ID"
+            android:inputType="text"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/FrameL"
+            android:layout_centerHorizontal="true" />
 
-
-    <LinearLayout
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_below="@+id/FrameL"
-        android:layout_above="@+id/Anasayfa"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:id="@+id/linearLayout">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/ProductID"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginEnd="5dp"
-                android:hint="ID"
-                android:inputType="text"/>
-
-            <EditText
-                android:id="@+id/ProductName"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:padding="10dp"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Product Name"
-                android:inputType="textEmailAddress"/>
-
-        </LinearLayout>
+        <EditText
+            android:id="@+id/ProductName"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:background="@drawable/name_input"
+            android:hint="Product Name"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/ProductID"
+            android:layout_alignLeft="@+id/ProductID"
+            android:layout_alignStart="@+id/ProductID" />
 
         <EditText
             android:id="@+id/KurumAdı"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/name_input"
             android:hint="Kurum Adı"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:layout_below="@+id/ProductName"
+            android:layout_alignLeft="@+id/ProductName"
+            android:layout_alignStart="@+id/ProductName" />
 
         <Button
             android:id="@+id/TarihSorgula"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_weight="0.33"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
             android:onClick="UrunBilgi"
-            android:background="#008080"
-            android:padding="10dp"
-            android:text="İşlem Tarihi Sorgula" />
+            android:background="@drawable/checkdate"
+            android:layout_alignTop="@+id/Anasayfa"
+            android:layout_alignLeft="@+id/KurumAdı"
+            android:layout_alignStart="@+id/KurumAdı"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp" />
 
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/Anasayfa"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="#808080"
-        android:text="Anasayfa"
-        android:onClick="UrunBilgi"
-        android:textColor="#FFF"
-        android:textSize="18sp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/linearLayout"
-        android:layout_alignStart="@+id/linearLayout"
-        android:layout_alignRight="@+id/linearLayout"
-        android:layout_alignEnd="@+id/linearLayout" />
+        <Button
+            android:id="@+id/Anasayfa"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:background="@drawable/mainpagebtn"
+            android:onClick="UrunBilgi"
+            android:textColor="#FFF"
+            android:textSize="18sp"
+            android:layout_marginTop="22dp"
+            android:layout_below="@+id/KurumAdı"
+            android:layout_alignRight="@+id/KurumAdı"
+            android:layout_alignEnd="@+id/KurumAdı"
+            android:layout_marginRight="11dp"
+            android:layout_marginEnd="11dp" />
 
 </RelativeLayout>

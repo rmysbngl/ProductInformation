@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "81765630555-dgiade3bkg03ko3s3iffrpk37igi8ook.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rumeysal.productinformation",
+            "certificate_hash": "7f8b32d914e220edd183b24fc632306c13efbc78"
+          }
+        },
+        {
+          "client_id": "81765630555-kmlcdue48u72nbjbu9dn25suhmtl5a24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rumeysal.productinformation",
+            "certificate_hash": "1fce03ff3ae90e4a0f715ede412ea61433dea11f"
+          }
+        },
+        {
           "client_id": "81765630555-85f9vor3pe8cgo0lsm02amuk3qbk0t6t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -30,6 +46,9 @@
       "api_key": [
         {
           "current_key": "AIzaSyCLA819EVCmCaVA0k2Ob9fNv5iBDrwh2JA"
+        },
+        {
+          "current_key": "AIzaSyBIBbcIbvn7qDJWuqO9xt5LMsUSVAarw0A"
         }
       ],
       "services": {

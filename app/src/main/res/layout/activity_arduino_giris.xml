@@ -4,29 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rumeysal.productinformation.ArduinoGiris">
+    tools:context="com.example.rumeysal.productinformation.ArduinoGiris"
+    android:background="@drawable/background">
 
     <Button
         android:id="@+id/Baslat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="129dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:onClick="ArduinoStart"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="210dp"
-        android:text="Baslat" />
+        android:background="@drawable/startbutton"
+        android:layout_marginBottom="48dp"
+        android:layout_above="@+id/BluetoothCondition"
+        android:layout_alignLeft="@+id/ayarlar"
+        android:layout_alignStart="@+id/ayarlar" />
 
     <Button
         android:id="@+id/ayarlar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      android:layout_centerVertical="true"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:onClick="ArduinoStart"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Ayarlar" />
+        android:background="@drawable/settingbutton"
+        android:layout_marginBottom="82dp"
+        android:layout_alignBottom="@+id/Baslat"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/BluetoothCondition"
