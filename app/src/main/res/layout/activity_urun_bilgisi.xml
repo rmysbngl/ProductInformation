@@ -11,7 +11,7 @@
         <FrameLayout
             android:id="@+id/FrameL"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
@@ -65,29 +65,25 @@
 
         <Button
             android:id="@+id/TarihSorgula"
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="35dp"
             android:onClick="UrunBilgi"
-            android:background="@drawable/checkdate"
-            android:layout_alignTop="@+id/Anasayfa"
-            android:layout_alignLeft="@+id/KurumAdı"
-            android:layout_alignStart="@+id/KurumAdı"
-            android:layout_marginLeft="11dp"
-            android:layout_marginStart="11dp" />
+            android:background="@drawable/btn_checkdate"
+            android:layout_above="@+id/Anasayfa"
+            android:layout_alignLeft="@+id/Anasayfa"
+            android:layout_alignStart="@+id/Anasayfa"
+            android:layout_marginBottom="13dp" />
 
         <Button
             android:id="@+id/Anasayfa"
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="35dp"
-            android:background="@drawable/mainpagebtn"
+            android:background="@drawable/mainpage"
             android:onClick="UrunBilgi"
             android:textColor="#FFF"
             android:textSize="18sp"
-            android:layout_marginTop="22dp"
-            android:layout_below="@+id/KurumAdı"
-            android:layout_alignRight="@+id/KurumAdı"
-            android:layout_alignEnd="@+id/KurumAdı"
-            android:layout_marginRight="11dp"
-            android:layout_marginEnd="11dp" />
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp" />
 
 </RelativeLayout>
