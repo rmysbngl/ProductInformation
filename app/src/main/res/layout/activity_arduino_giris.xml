@@ -12,7 +12,7 @@
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:onClick="ArduinoStart"
-        android:background="@drawable/startbutton"
+        android:background="@drawable/settingbutton"
         android:layout_marginBottom="48dp"
         android:layout_above="@+id/BluetoothCondition"
         android:layout_alignLeft="@+id/ayarlar"
@@ -23,7 +23,7 @@
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:onClick="ArduinoStart"
-        android:background="@drawable/settingbutton"
+        android:background="@drawable/startbutton"
         android:layout_marginBottom="82dp"
         android:layout_alignBottom="@+id/Baslat"
         android:layout_centerHorizontal="true" />
