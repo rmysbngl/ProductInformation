@@ -9,164 +9,141 @@
     <TextView
         android:id="@+id/Vakum"
         android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
+        android:background="@drawable/vacumtextview"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-
-        android:ems="10"
-        android:text="Vakum"
-        android:textColor="@android:color/background_dark"
-        android:textColorLink="@android:color/background_dark"
-        android:textSize="20dp"
-        android:visibility="visible" />
+        android:layout_alignLeft="@+id/VakumText"
+        android:layout_alignStart="@+id/VakumText"
+        android:layout_marginTop="25dp" />
 
     <EditText
         android:id="@+id/VakumText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="VakumT"
-        android:layout_below="@+id/Vakum"
-        android:layout_alignLeft="@+id/Vakum"
-        android:layout_alignStart="@+id/Vakum"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp" />
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:background="@drawable/vacuumedittext"
+        android:layout_alignBottom="@+id/MinusOne"
+        android:layout_alignLeft="@+id/Plazma"
+        android:layout_alignStart="@+id/Plazma" />
 
     <TextView
         android:id="@+id/Plazma"
         android:layout_width="80dp"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/Vakum"
-        android:layout_alignStart="@+id/Vakum"
-
-        android:layout_below="@+id/VakumText"
-        android:layout_marginTop="38dp"
-        android:ems="10"
-        android:text="Plazma"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20dp" />
+        android:layout_height="35dp"
+        android:background="@drawable/plasmatextview"
+        android:layout_above="@+id/MinusYuz"
+        android:layout_alignLeft="@+id/PlazmaText"
+        android:layout_alignStart="@+id/PlazmaText"
+        android:layout_marginBottom="21dp" />
 
     <EditText
         android:id="@+id/PlazmaText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PlazmaT"
-        android:layout_below="@+id/Plazma"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:background="@drawable/plazmaedittext"
+        android:layout_alignBaseline="@+id/PlusYuz"
+        android:layout_alignBottom="@+id/PlusYuz"
+        android:layout_alignLeft="@+id/Gaz"
+        android:layout_alignStart="@+id/Gaz" />
 
     <TextView
         android:id="@+id/Gaz"
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
-
-        android:ems="10"
-        android:text="Gaz"
-        android:textColor="@android:color/background_dark"
-        android:textSize="20dp"
-        android:layout_above="@+id/GazText"
+        android:layout_height="35dp"
+        android:background="@drawable/gaztextview"
+        android:layout_above="@+id/GazPlusOne"
         android:layout_alignLeft="@+id/GazText"
-        android:layout_alignStart="@+id/GazText" />
-
-
+        android:layout_alignStart="@+id/GazText"
+        android:layout_marginBottom="26dp" />
 
     <EditText
         android:id="@+id/GazText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gaz Text"
-        android:layout_alignBottom="@+id/GazPlusOne"
-        android:layout_alignRight="@+id/VakumText"
-        android:layout_alignEnd="@+id/VakumText" />
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:background="@drawable/gazedittext"
+        android:layout_alignTop="@+id/GazMinusOne"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/PlusOne"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:onClick="SetClick"
-        android:background="@drawable/plusicon"
-        android:layout_alignBottom="@+id/VakumText"
-        android:layout_toLeftOf="@+id/Plazma"
-        android:layout_toStartOf="@+id/Plazma" />
+        android:background="@drawable/plusvacuum"
+        android:layout_marginBottom="59dp"
+        android:layout_alignBottom="@+id/Plazma"
+        android:layout_alignLeft="@+id/PlusYuz"
+        android:layout_alignStart="@+id/PlusYuz" />
 
 
 
     <Button
         android:id="@+id/MinusOne"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:onClick="SetClick"
-        android:layout_alignBottom="@+id/VakumText"
-        android:layout_alignLeft="@+id/MinusYuz"
-        android:layout_alignStart="@+id/MinusYuz"
-        android:background="@drawable/minusicon"/>
+        android:background="@drawable/minusvacuum"
+        android:layout_alignBaseline="@+id/PlusOne"
+        android:layout_alignBottom="@+id/PlusOne"
+        android:layout_alignLeft="@+id/GazMinusOne"
+        android:layout_alignStart="@+id/GazMinusOne" />
 
 
 
     <Button
         android:id="@+id/PlusYuz"
-        android:layout_width="60dp"
-        android:background="@drawable/plusicon"
-        android:layout_height="wrap_content"
-        android:text="+100"
-        android:layout_centerVertical="true"
+        android:layout_width="50dp"
+        android:background="@drawable/plusplasma"
+        android:layout_height="50dp"
         android:onClick="SetClick"
-        android:layout_toLeftOf="@+id/Plazma"
-        android:layout_toStartOf="@+id/Plazma"
-        android:layout_marginRight="13dp"
-        android:layout_marginEnd="13dp" />
+        android:layout_alignBaseline="@+id/MinusYuz"
+        android:layout_alignBottom="@+id/MinusYuz"
+        android:layout_alignLeft="@+id/GazPlusOne"
+        android:layout_alignStart="@+id/GazPlusOne" />
 
 
 
     <Button
         android:id="@+id/MinusYuz"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:onClick="SetClick"
-        android:background="@drawable/minusicon"
-        android:layout_alignTop="@+id/PlusYuz"
-        android:layout_toEndOf="@+id/PlazmaText"
-        android:layout_toRightOf="@+id/PlazmaText"
-        android:layout_marginLeft="15dp"
-        android:text="-100" />
+        android:background="@drawable/minusplasma"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/MinusOne"
+        android:layout_alignStart="@+id/MinusOne" />
 
     <Button
         android:id="@+id/GazMinusOne"
         android:layout_width="50dp"
         android:onClick="SetClick"
-        android:layout_height="wrap_content"
-        android:background="@drawable/minusicon"
-        android:layout_below="@+id/Gaz"
-        android:layout_alignLeft="@+id/Home"
-        android:layout_alignStart="@+id/Home" />
+        android:layout_height="50dp"
+        android:background="@drawable/minusgas"
+        android:layout_alignBaseline="@+id/GazPlusOne"
+        android:layout_alignBottom="@+id/GazPlusOne"
+        android:layout_toRightOf="@+id/Home"
+        android:layout_toEndOf="@+id/Home" />
 
     <Button
         android:id="@+id/GazPlusOne"
         android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/plusicon"
+        android:layout_height="50dp"
+        android:background="@drawable/plusgas"
         android:onClick="SetClick"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="28dp"
         android:layout_above="@+id/Home"
-        android:layout_alignLeft="@+id/PlusYuz"
-        android:layout_alignStart="@+id/PlusYuz" />
-
-
-
-
+        android:layout_toLeftOf="@+id/Home"
+        android:layout_toStartOf="@+id/Home" />
 
 
     <Button
         android:id="@+id/Home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Anasayfa"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
         android:onClick="SetClick"
+        android:background="@drawable/mainpage"
+        android:layout_marginBottom="12dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/MinusYuz"
-        android:layout_alignStart="@+id/MinusYuz"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp" />
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

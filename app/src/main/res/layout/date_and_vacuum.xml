@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="match_parent"
+    android:background="@drawable/searchdatebg">
 
     <ListView
         android:id="@+id/UrunList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        android:background="@drawable/searchdatebg"/>
     <TextView
         android:id="@android:id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Bu ürün henüz işlemden geçememiş"/>
-
 
 </LinearLayout>

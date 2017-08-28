@@ -4,33 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rumeysal.productinformation.SearchDate">
+    tools:context="com.example.rumeysal.productinformation.SearchDate"
+    android:background="@drawable/searchdatebg"
+>
 
     <EditText
         android:id="@+id/Date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="72dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="183dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="216dp"
         android:ems="10"
-        android:hint="yyyy/mm/dd"
-        android:inputType="date" />
+        android:background="@drawable/txtdate"
+        android:hint="                     yyyy/mm/dd"
+        android:inputType="date"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/Sorgula"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="83dp"
-        android:text="Sorgula"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="53dp"
         android:onClick="Sorgula"
+        android:background="@drawable/checkbutton"
         android:layout_below="@+id/Date"
-        android:layout_alignRight="@+id/Date"
-        android:layout_alignEnd="@+id/Date"
-        android:layout_marginRight="62dp"
-        android:layout_marginEnd="62dp" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

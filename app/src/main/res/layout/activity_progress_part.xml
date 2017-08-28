@@ -31,7 +31,7 @@
         android:max="100"
         android:visibility="visible"
         tools:visibility="visible"
-            android:layout_marginTop="5dp"
+        android:layout_marginTop="5dp"
         android:progressDrawable="@drawable/values"
         android:layout_above="@+id/Anasayfa"
         android:layout_marginBottom="5dp"
@@ -39,13 +39,11 @@
 
     <Button
         android:id="@+id/Anasayfa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Anasayfa"
-        android:onClick="Click"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:background="@drawable/mainpage"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/graph"
-        android:layout_alignEnd="@+id/graph" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/Values"

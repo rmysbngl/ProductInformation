@@ -32,8 +32,8 @@
         android:id="@+id/BluetoothCondition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Bluetooth status: "
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Bluetooth status: " />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

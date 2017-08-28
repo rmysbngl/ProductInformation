@@ -4,22 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.rumeysal.productinformation.BTConnect">
+    tools:context="com.example.rumeysal.productinformation.BTConnect"
+    android:background="@drawable/background">
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/BTStatus"
-    android:text="BT status"/>
+    android:text="BT status"
+    android:layout_alignParentBottom="true"
+    android:layout_alignRight="@+id/NextPage"
+    android:layout_alignEnd="@+id/NextPage"
+    android:layout_marginRight="76dp"
+    android:layout_marginEnd="76dp" />
 
 
     <Button
         android:id="@+id/NextPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
         android:onClick="NextPage"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="83dp"
+        android:background="@drawable/nextbutton"/>
 
 </RelativeLayout>
