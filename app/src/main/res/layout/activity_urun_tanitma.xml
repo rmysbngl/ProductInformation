@@ -59,16 +59,13 @@
         android:hint="Kurum Bilgisi"
         android:inputType="textPersonName" />
 
-    <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+    <Button
         android:id="@+id/Onay"
         android:layout_width="100dp"
         android:layout_height="55dp"
         android:text="Onayla"
-   
         android:background="@drawable/onybutton"
-        app:spinning_bar_color="#fff"
-        app:spinning_bar_padding="6dp"
-        app:spinning_bar_width="4dp"
+    android:onClick="clicked"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
