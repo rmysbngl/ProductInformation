@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="50dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:gravity="center"
     tools:context="com.example.rumeysal.productinformation.UrunTanitma"
     android:background="@drawable/bg_uruntanitimsonunsonu">
 
@@ -12,24 +16,24 @@
         android:id="@+id/Pager"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:clickable="true"
         android:onClick="ClickedImage"
-        android:layout_marginTop="12dp"
-        />
+        android:layout_above="@+id/Name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="58dp" />
 
     <TextView
         android:id="@+id/QRID"
         android:layout_width="250dp"
         android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
         android:background="@drawable/name_input"
-        android:hint="  ID"
-        android:layout_marginTop="14dp"
-        android:layout_below="@+id/PhotoAdd"
-        android:layout_toLeftOf="@+id/Onay"
-        android:layout_toStartOf="@+id/Onay" />
+        android:hint="  ID" />
 
     <EditText
         android:id="@+id/Name"
@@ -38,7 +42,7 @@
         android:layout_alignLeft="@+id/QRID"
         android:layout_alignStart="@+id/QRID"
         android:layout_below="@+id/QRID"
-        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/name_input"
         android:ems="10"
@@ -52,7 +56,7 @@
         android:layout_alignLeft="@+id/Name"
         android:layout_alignStart="@+id/Name"
         android:layout_below="@+id/Name"
-        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/name_input"
         android:ems="10"
@@ -63,24 +67,21 @@
         android:id="@+id/Onay"
         android:layout_width="100dp"
         android:layout_height="55dp"
-        android:text="Onayla"
         android:background="@drawable/onybutton"
-    android:onClick="clicked"
-        android:layout_alignParentBottom="true"
+        android:onClick="clicked"
+        android:layout_alignTop="@+id/PhotoAdd"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:id="@+id/PhotoAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_menu_camera"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:background="@drawable/imageadd"
         android:onClick="AddPhotoImage"
-        android:layout_marginRight="13dp"
-        android:layout_marginEnd="13dp"
-        android:layout_below="@+id/Pager"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/Kurum"
+        android:layout_alignStart="@+id/Kurum" />
 
 
 </RelativeLayout>
