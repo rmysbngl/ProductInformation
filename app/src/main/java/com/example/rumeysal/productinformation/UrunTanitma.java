@@ -38,6 +38,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
@@ -48,11 +51,14 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 
 
 // Sisteme yeni ürün girişi yapıldığı zaman kullanılacak
-public class UrunTanitma extends AppCompatActivity {
+public class UrunTanitma extends AppCompatActivity implements  Validator.ValidationListener{
     private static int Camera_Request=1;
     TextView QRID;
+    @NotEmpty
     EditText name;
+    @NotEmpty
     EditText KurumAdı;
+    Validator validator;
     public static String id;
     String urunadi;
     String kurumAdi;
@@ -74,83 +80,19 @@ public class UrunTanitma extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urun_tanitma);
+        validator = new Validator(this);
+        validator.setValidationListener(this);
+
         viewPager=(ViewPager) findViewById(R.id.Pager);
         QRID=(TextView) findViewById(R.id.QRID) ;
+        KurumAdı=(EditText) findViewById(R.id.Kurum);
         name=(EditText) findViewById(R.id.Name) ;
-        butoon=(CircularProgressButton) findViewById(R.id.Onay);
-        butoon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final StorageReference[] storePhoto = new StorageReference[1];
-                KurumAdı=(EditText) findViewById(R.id.Kurum);
-                urunadi=name.getText().toString().trim();
-                kurumAdi=KurumAdı.getText().toString().trim();
-
-                AsyncTask<String, String, String> demoLogin =new AsyncTask<String, String, String>() {
-                    @Override
-                    protected String doInBackground(String... strings) {
-                        product.add(new Product(id,urunadi,kurumAdi));
-
-
-                        for(int i=0; i< product.size(); i++){
-
-                            final DatabaseReference ProductInformation=UrunRef.child(product.get(i).getId());
-                            ProductInformation.child("name").setValue(product.get(i).getUrunadı());
-                            ProductInformation.child("ID").setValue(product.get(i).getId());
-                            ProductInformation.child("Kurum Adı").setValue(product.get(i).getKurumadı());
-
-                            for( int j=0; j<images.size();j++){         //Store image on Firebase Storoge
-                                storePhoto[0] = FirebaseStorage.getInstance().getReference("Urunler").child(product.get(i).getId()).child("images"+j);
-                                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                                images.get(j).compress(Bitmap.CompressFormat.JPEG, 20, baos);
-                                byte[] data = baos.toByteArray();
-                                UploadTask uploadTask = storePhoto[0].putBytes(data);
-                                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                    @Override
-                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                        final String downloadUrl = taskSnapshot.getDownloadUrl().toString();
-
-
-                                        ProductInformation.child("Images").push().setValue(downloadUrl);
-                                        id=null;
-
-
-                                    }
-                                });
-
-                            }
-
-
-                        }
-
-
-
-                        return "done";
-                    }
-
-
-                    @Override
-                    protected void onPostExecute(String s) {
-                        super.onPostExecute(s);
-                        if(s.equals("done")){
-                            Toast.makeText(UrunTanitma.this, "It is succesfull", Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(UrunTanitma.this, GirisEkrani.class);
-                        startActivity(i);
-                        id=null;
-
-                        }
-                    }
-                };
-
-
-                butoon.startAnimation();
-                demoLogin.execute();
-            }
-        });
 
 
 
     }
+
+
 
 
     @Override
@@ -183,7 +125,6 @@ public class UrunTanitma extends AppCompatActivity {
             images.add(photo) ;
             urunTanitmaAdapter=new UrunTanitmaAdapter(UrunTanitma.this,images);
             viewPager.setAdapter(urunTanitmaAdapter);
-
 
 
 
@@ -234,5 +175,63 @@ public class UrunTanitma extends AppCompatActivity {
     public void AddPhotoImage(View view) {
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent,Camera_Request);
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        urunadi=name.getText().toString().trim();
+        kurumAdi=KurumAdı.getText().toString().trim();
+
+
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        for (ValidationError error : errors) {
+            View view = error.getView();
+            String mesaj = error.getCollatedErrorMessage(this);
+            if (view instanceof EditText) {
+                ((EditText) view).setError(mesaj);
+            }
+
+        }
+    }
+
+
+    public void clicked(View view) {
+        validator.validate();
+        product.add(new Product(id,urunadi,kurumAdi));
+        final StorageReference[] storePhoto = new StorageReference[1];
+        for(int i=0; i< product.size(); i++){
+
+            final DatabaseReference ProductInformation=UrunRef.child(product.get(i).getId());
+            ProductInformation.child("name").setValue(product.get(i).getUrunadı());
+            ProductInformation.child("ID").setValue(product.get(i).getId());
+            ProductInformation.child("Kurum Adı").setValue(product.get(i).getKurumadı());
+
+            for( int j=0; j<images.size();j++){         //Store image on Firebase Storoge
+                storePhoto[0] = FirebaseStorage.getInstance().getReference("Urunler").child(product.get(i).getId()).child("images"+j);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                images.get(j).compress(Bitmap.CompressFormat.JPEG, 20, baos);
+                byte[] data = baos.toByteArray();
+                UploadTask uploadTask = storePhoto[0].putBytes(data);
+                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        final String downloadUrl = taskSnapshot.getDownloadUrl().toString();
+                        ProductInformation.child("Images").push().setValue(downloadUrl);
+                        id=null;
+
+
+                    }
+                });
+
+            }
+            Toast.makeText(UrunTanitma.this, "It is succesfull", Toast.LENGTH_SHORT).show();
+            Intent onaylandı = new Intent(UrunTanitma.this, GirisEkrani.class);
+            startActivity(onaylandı);
+
+
+        }
     }
 }
