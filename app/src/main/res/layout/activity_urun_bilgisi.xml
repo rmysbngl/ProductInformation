@@ -67,12 +67,12 @@
             android:id="@+id/TarihSorgula"
             android:layout_width="200dp"
             android:layout_height="35dp"
-            android:onClick="UrunBilgi"
-            android:background="@drawable/btn_checkdate"
             android:layout_above="@+id/Anasayfa"
             android:layout_alignLeft="@+id/Anasayfa"
             android:layout_alignStart="@+id/Anasayfa"
-            android:layout_marginBottom="13dp" />
+            android:layout_marginBottom="13dp"
+            android:background="@drawable/btn_checkdate"
+            android:onClick="OnClick" />
 
         <Button
             android:id="@+id/Anasayfa"

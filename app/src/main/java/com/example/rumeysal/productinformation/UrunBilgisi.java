@@ -46,7 +46,7 @@ public class UrunBilgisi extends AppCompatActivity {
     public String id;
     UrunAdapter adapter;                    //tarih sorgularken kullanılan Adapter
     ListView urunList;
-    static ArrayList <String> keys=new ArrayList<>();
+    ArrayList <String> keys=new ArrayList<>();
     FirebaseDatabase database=FirebaseDatabase.getInstance();
     DatabaseReference ref=database.getReference("Urunler");                     //Firebase kısmı ürünün bilgilerine ulaşmak için
     DatabaseReference tarihRef=database.getReference("Processed Part");
@@ -73,7 +73,7 @@ public class UrunBilgisi extends AppCompatActivity {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                //keys.clear();
                 if(dataSnapshot.child(id).exists()){
                     DataSnapshot obj = dataSnapshot.child(id);
                     productcondition="OK";
@@ -130,18 +130,24 @@ public class UrunBilgisi extends AppCompatActivity {
 
     //Ürünün resmini sayfada kayar şekilde kurmak için
     public void creatCustomDialog(Context context){
+        if(urunList != null){
+            if(urunList.getAdapter() != null){
+                urunList.setAdapter(null);
+            }
+        }
+        urunList = null;
+        your_array.clear();
         View dialogView = View.inflate(context,R.layout.date_and_vacuum, null);
         urunList=dialogView.findViewById(R.id.UrunList);
         adapter = new UrunAdapter(context, R.layout.urun_adi, your_array );
         urunList.setAdapter(adapter);
         AlertDialog.Builder builder=new AlertDialog.Builder(context)
                 .setView(dialogView);
-        builder.create().show();
 
+        builder.create().show();
     }
 
-
-    public void UrunBilgi(View view) {
+    public void OnClick(View view) {
         switch(view.getId()){
             case R.id.Anasayfa:
                 Intent intent=new Intent(UrunBilgisi.this,GirisEkrani.class)  ;
@@ -154,6 +160,7 @@ public class UrunBilgisi extends AppCompatActivity {
                 tarihRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        your_array.clear();
                         for(int i=0; i<keys.size();i++){
                             your_array.add(new DateAndVacuum(dataSnapshot.child(keys.get(i)).child("Date").getValue().toString(),dataSnapshot.child(keys.get(i)).child("vacuum").getValue().toString(),dataSnapshot.child(keys.get(i)).child("gaz value").getValue().toString(),dataSnapshot.child(keys.get(i)).child("plasma time").getValue().toString()));
                             adapter.notifyDataSetChanged();
