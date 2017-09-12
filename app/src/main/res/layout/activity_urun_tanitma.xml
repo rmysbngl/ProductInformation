@@ -67,11 +67,11 @@
         android:id="@+id/Onay"
         android:layout_width="100dp"
         android:layout_height="55dp"
-        android:background="@drawable/onybutton"
-        android:onClick="clicked"
-        android:layout_alignTop="@+id/PhotoAdd"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignTop="@+id/PhotoAdd"
+        android:background="@drawable/onybutton"
+        android:onClick="Clicked" />
 
     <ImageButton
         android:id="@+id/PhotoAdd"

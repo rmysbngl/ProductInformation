@@ -43,11 +43,9 @@ public class SettingPart extends AppCompatActivity {
 
     BluetoothSPP bt;
 
-
     EditText vakum;
     EditText plazma;
     EditText gaz;
-
 
     //Cihazın Default value ları
     static int vacuumValue=-84;
@@ -70,10 +68,6 @@ public class SettingPart extends AppCompatActivity {
         vakum.setText(String.valueOf(vacuumValue));
         plazma.setText(String.valueOf(plasmaValue));
         gaz.setText(String.valueOf(gazValue));
-
-
-
-
 
     }
 

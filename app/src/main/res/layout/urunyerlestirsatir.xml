@@ -7,16 +7,16 @@
 
     <TextView
         android:id="@+id/newProductID"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
         android:text="ID" />
 
 
 
     <TextView
         android:id="@+id/newProductName"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
         android:text="TextView" />
 
 

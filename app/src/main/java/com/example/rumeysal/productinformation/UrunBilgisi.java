@@ -96,14 +96,11 @@ public class UrunBilgisi extends AppCompatActivity {
                         });
                     }
 
-
                     for(DataSnapshot DateRef: obj.child("KeyValueDate").getChildren()){
                         keys.add(DateRef.getValue().toString());
                     }
 
                 }
-
-
                     //Eğer öyle bir ürün yoksa oluşturuluyor
                 if(productcondition==null){
                     Toast.makeText(UrunBilgisi.this, "Ürün Bulunamadı", Toast.LENGTH_SHORT).show();
@@ -118,15 +115,7 @@ public class UrunBilgisi extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
-
-
-
-
 
     //Ürünün resmini sayfada kayar şekilde kurmak için
     public void creatCustomDialog(Context context){
