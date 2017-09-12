@@ -117,7 +117,7 @@ public class SettingPart extends AppCompatActivity {
                 gazValue = gazValue + 1;
                 gaz.setText(String.valueOf(gazValue));
                 break;
-            case(R.id.Anasayfa):
+            case(R.id.Home):
                 vacuumValue=Integer.valueOf(String.valueOf(vakum.getText()));           //en son haliyle data göndermek için
                 vakum.setText(String.valueOf(vacuumValue));
                 plasmaValue=Integer.valueOf(String.valueOf(plazma.getText()));
