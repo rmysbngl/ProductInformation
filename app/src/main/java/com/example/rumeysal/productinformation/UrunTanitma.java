@@ -199,6 +199,8 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
 
 
     public void clicked(View view) {
+        switch(view.getId()){
+            case(R.id.Onay):
         validator.validate();
         product.add(new Product(id,urunadi,kurumAdi));
         final StorageReference[] storePhoto = new StorageReference[1];
@@ -227,11 +229,12 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
                 });
 
             }
+            if(id==null){
             Toast.makeText(UrunTanitma.this, "It is succesfull", Toast.LENGTH_SHORT).show();
             Intent onaylandı = new Intent(UrunTanitma.this, GirisEkrani.class);
-            startActivity(onaylandı);
-
+            startActivity(onaylandı);}
+        break;
 
         }
-    }
+    }}
 }
