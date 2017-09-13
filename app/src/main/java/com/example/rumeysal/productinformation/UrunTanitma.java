@@ -79,6 +79,7 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_urun_tanitma);
         validator = new Validator(this);
         validator.setValidationListener(this);
@@ -88,12 +89,7 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
         KurumAdı=(EditText) findViewById(R.id.Kurum);
         name=(EditText) findViewById(R.id.Name) ;
 
-
-
     }
-
-
-
 
     @Override
     protected void onStart() {
@@ -108,14 +104,8 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
                             integrator.setBeepEnabled(false);
                             integrator.setBarcodeImageEnabled(false);
                             integrator.initiateScan();
-
         }
-
-
-
     }
-
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -125,8 +115,6 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
             images.add(photo) ;
             urunTanitmaAdapter=new UrunTanitmaAdapter(UrunTanitma.this,images);
             viewPager.setAdapter(urunTanitmaAdapter);
-
-
 
         }
         //QR code reader part
@@ -157,19 +145,12 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
 
                     }
                 });
-
-
-
             }
         }
         else{
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
-
-
-
 
 
     public void AddPhotoImage(View view) {
@@ -197,7 +178,6 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
         }
     }
 
-
     public void Clicked(View view) {
         validator.validate();
         product.add(new Product(id,urunadi,kurumAdi));
@@ -221,8 +201,6 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
                         final String downloadUrl = taskSnapshot.getDownloadUrl().toString();
                         ProductInformation.child("Images").push().setValue(downloadUrl);
                         id=null;
-
-
                     }
                 });
 

@@ -71,11 +71,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:onClick="SetClick"
-        android:background="@drawable/plusvacuum"
-        android:layout_marginBottom="59dp"
-        android:layout_alignBottom="@+id/Plazma"
-        android:layout_alignLeft="@+id/PlusYuz"
-        android:layout_alignStart="@+id/PlusYuz" />
+        android:background="@drawable/minusvacuum"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/Plazma"
+        android:layout_alignLeft="@+id/GazMinusOne"
+        android:layout_alignStart="@+id/GazMinusOne" />
 
 
 
@@ -84,11 +84,11 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:onClick="SetClick"
-        android:background="@drawable/minusvacuum"
+        android:background="@drawable/plusvacuum"
         android:layout_alignBaseline="@+id/PlusOne"
         android:layout_alignBottom="@+id/PlusOne"
-        android:layout_alignLeft="@+id/GazMinusOne"
-        android:layout_alignStart="@+id/GazMinusOne" />
+        android:layout_alignLeft="@+id/PlusYuz"
+        android:layout_alignStart="@+id/PlusYuz" />
 
 
 
@@ -112,8 +112,8 @@
         android:onClick="SetClick"
         android:background="@drawable/minusplasma"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/MinusOne"
-        android:layout_alignStart="@+id/MinusOne" />
+        android:layout_alignLeft="@+id/PlusOne"
+        android:layout_alignStart="@+id/PlusOne" />
 
     <Button
         android:id="@+id/GazMinusOne"

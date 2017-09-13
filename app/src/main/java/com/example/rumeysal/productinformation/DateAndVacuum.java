@@ -7,13 +7,16 @@ package com.example.rumeysal.productinformation;
 public class DateAndVacuum {
 
     private String date;
+    private String time;
     private String VacuumValue;
     private  String GasValue;
     private  String PlasmaValue;
 
        //URUN bilgisi kısmınta tarih sorgularken gelen tarihi ve diğer değerleri arraylist e aktarmak için
-    public DateAndVacuum(String date, String vacuumValue, String gasValue, String plasmaValue) {
+
+    public DateAndVacuum(String date, String time, String vacuumValue, String gasValue, String plasmaValue) {
         this.date = date;
+        this.time = time ;
         VacuumValue = vacuumValue;
         GasValue = gasValue;
         PlasmaValue = plasmaValue;
@@ -43,4 +46,13 @@ public class DateAndVacuum {
     public void setVacuumValue(String vacuumValue) {
         VacuumValue = vacuumValue;
     }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
 }

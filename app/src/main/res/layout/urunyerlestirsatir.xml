@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:background="@drawable/searchdatebg">
+    android:layout_width="match_parent"
+    android:layout_height="40sp"
+    android:layout_marginTop="40sp"
+    android:background="@drawable/searchdatebg"
+    android:orientation="horizontal"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/newProductID"
-        android:layout_width="match_parent"
+        android:layout_width="30sp"
         android:layout_height="30sp"
+        android:layout_weight="1"
+        android:gravity="center"
         android:text="ID" />
-
 
 
     <TextView
         android:id="@+id/newProductName"
-        android:layout_width="match_parent"
-        android:layout_height="30sp"
+        android:layout_width="193dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:text="TextView" />
 
 

@@ -34,15 +34,17 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 
 
 public class UrunYerlestir extends AppCompatActivity {
+
     Button addProduct1;
     ListView urunyerlestir;
     Button arduinoGiris;
     String id="0";
+
    static ArrayList<String> productIdForDate=new ArrayList<>();         //to getting prdocut id to check later
     ArduinoGiris ag = new ArduinoGiris();                       //to send products id to arduino page
 
 
-    static List<ProductInProgress> islemUrun=new ArrayList<>();          //Şu an işlem gören ürünler
+    static List<ProductInProgress> islemUrun = new ArrayList<>();          //Şu an işlem gören ürünler
 
     FirebaseDatabase database=FirebaseDatabase.getInstance();
     DatabaseReference ref=database.getReference("Urunler");                           //sistemde kayıtlı ürünlerin listesi
@@ -167,10 +169,6 @@ public class UrunYerlestir extends AppCompatActivity {
 
     }
 
-
-
-
-
     //Eklenen ürünü üstten menu ile seçiyorsun //TODO: eğer istenilirse burada menu yerine button da oluşturulabilir.
    // @Override
     /* public boolean onCreateOptionsMenu(Menu menu) {
@@ -180,7 +178,7 @@ public class UrunYerlestir extends AppCompatActivity {
     }*/
 
     @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int selectedItem = item.getItemId();
 
         switch (selectedItem) {
@@ -197,6 +195,7 @@ public class UrunYerlestir extends AppCompatActivity {
 
         return true;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result=IntentIntegrator.parseActivityResult(requestCode,resultCode,data);

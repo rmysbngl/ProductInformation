@@ -40,12 +40,14 @@ public class UrunAdapter extends ArrayAdapter<DateAndVacuum> {
             convertView = LayoutInflater.from(context).inflate(R.layout.urun_adi, parent,false);
         }
 
+        TextView tvTime = convertView.findViewById(R.id.SaatBilgi);
         TextView tvBilgi = convertView.findViewById(R.id.UrunBilgi);
         TextView tvVacuum = convertView.findViewById(R.id.UrunVacuum);
         TextView  tvGas=convertView.findViewById(R.id.UrunGas);
         TextView  tvPlasma=convertView.findViewById(R.id.UrunPlazma);
 
         tvBilgi.setText(array.get(position).getDate());
+        tvTime.setText(array.get(position).getTime());
         tvVacuum.setText("Vacuum: "+array.get(position).getVacuumValue());
         tvGas.setText("Gas:    "+array.get(position).getGasValue());
         tvPlasma.setText("Plasma: "+array.get(position).getPlasmaValue());

@@ -69,7 +69,7 @@ public class UrunBilgisi extends AppCompatActivity {
         image.clear();
         your_array.clear();
 
-
+        // Firebase den ürün bilgisini çekiyor
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -151,7 +151,7 @@ public class UrunBilgisi extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         your_array.clear();
                         for(int i=0; i<keys.size();i++){
-                            your_array.add(new DateAndVacuum(dataSnapshot.child(keys.get(i)).child("Date").getValue().toString(),dataSnapshot.child(keys.get(i)).child("vacuum").getValue().toString(),dataSnapshot.child(keys.get(i)).child("gaz value").getValue().toString(),dataSnapshot.child(keys.get(i)).child("plasma time").getValue().toString()));
+                            your_array.add(new DateAndVacuum(dataSnapshot.child(keys.get(i)).child("Date").getValue().toString(), dataSnapshot.child(keys.get(i)).child("Exact Time").getValue().toString(),dataSnapshot.child(keys.get(i)).child("vacuum").getValue().toString(),dataSnapshot.child(keys.get(i)).child("gaz value").getValue().toString(),dataSnapshot.child(keys.get(i)).child("plasma time").getValue().toString()));
                             adapter.notifyDataSetChanged();
                         }
                     }
