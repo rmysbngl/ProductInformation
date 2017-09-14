@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="135sp"
     android:orientation="vertical"
     android:background="@drawable/searchdatebg">
 
@@ -17,12 +17,12 @@
         <TextView
             android:id="@+id/asdfas"
             android:layout_width="match_parent"
-            android:layout_height="30sp"
+            android:layout_height="35sp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="Tarih/Saat"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/UrunBilgi"
