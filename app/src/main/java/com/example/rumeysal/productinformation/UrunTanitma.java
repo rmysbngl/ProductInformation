@@ -59,12 +59,12 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
     @NotEmpty
     EditText KurumAdı;
     Validator validator;
+    boolean control=false;
     public static String id;
-    String urunadi;
-    String kurumAdi;
+    public String urunadi=null;
+    public String kurumAdi=null;
     ViewPager viewPager;
     UrunTanitmaAdapter urunTanitmaAdapter;
-   CircularProgressButton butoon;
     ArrayList<Bitmap> images=new ArrayList<>();         //taken from camera for describing product
 
 
@@ -81,13 +81,12 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_urun_tanitma);
-        validator = new Validator(this);
-        validator.setValidationListener(this);
-
         viewPager=(ViewPager) findViewById(R.id.Pager);
         QRID=(TextView) findViewById(R.id.QRID) ;
         KurumAdı=(EditText) findViewById(R.id.Kurum);
         name=(EditText) findViewById(R.id.Name) ;
+        validator = new Validator(this);
+        validator.setValidationListener(this);
 
     }
 
@@ -133,10 +132,27 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(dataSnapshot.child(id).exists()){
-                            Toast.makeText(UrunTanitma.this, "This ID was used before ", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(UrunTanitma.this,GirisEkrani.class);    //If it is used go back
-                            startActivity(intent);
-                            id=null;
+                            AlertDialog.Builder dialog=new AlertDialog.Builder(UrunTanitma.this);
+                            dialog.setMessage("Bu ürün daha önce tanımlandı. Lütfen yeni ürün giriniz")
+                                    .setPositiveButton("Geri Dön", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            Intent intent=new Intent(UrunTanitma.this,GirisEkrani.class);    //If it is used go back
+                                            startActivity(intent);
+                                            id=null;
+                                        }
+                                    })
+                                    .setNegativeButton("Yeni Ürün", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            id=null;
+                                            onStart();
+
+                                        }
+                                    })
+                                    .show();
+
+
                         }
                     }
 
@@ -160,6 +176,7 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
 
     @Override
     public void onValidationSucceeded() {
+        control=true;
         urunadi=name.getText().toString().trim();
         kurumAdi=KurumAdı.getText().toString().trim();
 
@@ -180,36 +197,40 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
 
     public void Clicked(View view) {
         validator.validate();
-        product.add(new Product(id,urunadi,kurumAdi));
-        final StorageReference[] storePhoto = new StorageReference[1];
-        for(int i=0; i< product.size(); i++){
+        if(control) {
+            product.add(new Product(id, urunadi, kurumAdi));
+            final StorageReference[] storePhoto = new StorageReference[1];
+            for (int i = 0; i < product.size(); i++) {
 
-            final DatabaseReference ProductInformation=UrunRef.child(product.get(i).getId());
-            ProductInformation.child("name").setValue(product.get(i).getUrunadı());
-            ProductInformation.child("ID").setValue(product.get(i).getId());
-            ProductInformation.child("Kurum Adı").setValue(product.get(i).getKurumadı());
+                final DatabaseReference ProductInformation = UrunRef.child(product.get(i).getId());
+                ProductInformation.child("name").setValue(product.get(i).getUrunadı());
+                ProductInformation.child("ID").setValue(product.get(i).getId());
+                ProductInformation.child("Kurum Adı").setValue(product.get(i).getKurumadı());
 
-            for( int j=0; j<images.size();j++){         //Store image on Firebase Storoge
-                storePhoto[0] = FirebaseStorage.getInstance().getReference("Urunler").child(product.get(i).getId()).child("images"+j);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                images.get(j).compress(Bitmap.CompressFormat.JPEG, 20, baos);
-                byte[] data = baos.toByteArray();
-                UploadTask uploadTask = storePhoto[0].putBytes(data);
-                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        final String downloadUrl = taskSnapshot.getDownloadUrl().toString();
-                        ProductInformation.child("Images").push().setValue(downloadUrl);
-                        id=null;
-                    }
-                });
+                for (int j = 0; j < images.size(); j++) {         //Store image on Firebase Storoge
+                    storePhoto[0] = FirebaseStorage.getInstance().getReference("Urunler").child(product.get(i).getId()).child("images" + j);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    images.get(j).compress(Bitmap.CompressFormat.JPEG, 20, baos);
+                    byte[] data = baos.toByteArray();
+                    UploadTask uploadTask = storePhoto[0].putBytes(data);
+                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            final String downloadUrl = taskSnapshot.getDownloadUrl().toString();
+                            ProductInformation.child("Images").push().setValue(downloadUrl);
+                            id = null;
+                        }
+                    });
 
+                }
+                Toast.makeText(UrunTanitma.this, "It is succesfull", Toast.LENGTH_SHORT).show();
+                Intent onaylandı = new Intent(UrunTanitma.this, GirisEkrani.class);
+                startActivity(onaylandı);
             }
-            Toast.makeText(UrunTanitma.this, "It is succesfull", Toast.LENGTH_SHORT).show();
-            Intent onaylandı = new Intent(UrunTanitma.this, GirisEkrani.class);
-            startActivity(onaylandı);
 
-
+        }else{
+            Toast.makeText(this, "Lütfen boş alanları doldurunuz", Toast.LENGTH_SHORT).show();
         }
+
     }
 }
