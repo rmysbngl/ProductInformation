@@ -40,6 +40,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.io.ByteArrayOutputStream;
@@ -53,7 +54,8 @@ import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
 // Sisteme yeni ürün girişi yapıldığı zaman kullanılacak
 public class UrunTanitma extends AppCompatActivity implements  Validator.ValidationListener{
     private static int Camera_Request=1;
-    TextView QRID;
+
+    EditText QRID;
     @NotEmpty
     EditText name;
     @NotEmpty
@@ -82,9 +84,10 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
 
         setContentView(R.layout.activity_urun_tanitma);
         viewPager=(ViewPager) findViewById(R.id.Pager);
-        QRID=(TextView) findViewById(R.id.QRID) ;
+        QRID=(EditText) findViewById(R.id.QRID) ;
         KurumAdı=(EditText) findViewById(R.id.Kurum);
         name=(EditText) findViewById(R.id.Name) ;
+
         validator = new Validator(this);
         validator.setValidationListener(this);
 
@@ -174,6 +177,8 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
         startActivityForResult(cameraIntent,Camera_Request);
     }
 
+
+    //EditText doldurulmuş olmasını control ediyor
     @Override
     public void onValidationSucceeded() {
         control=true;
