@@ -15,10 +15,8 @@
         android:layout_marginTop="93dp"
         android:background="@drawable/brand"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-
-
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView" />
 
     <!--<Button
         android:layout_width="172dp"
@@ -49,6 +47,37 @@
         app:spinning_bar_padding="6dp"
         app:spinning_bar_width="4dp" />
 
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:gravity="center"
+        android:background="@drawable/name_input"
+        android:layout_above="@+id/Baslat"
+        android:layout_alignLeft="@+id/editTextEmail"
+        android:layout_alignStart="@+id/editTextEmail"
+        android:layout_alignRight="@+id/editTextEmail"
+        android:layout_alignEnd="@+id/editTextEmail" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_marginBottom="55dp"
+        android:ems="10"
+        android:hint="e-mail"
+        android:gravity="center"
+        android:background="@drawable/name_input"
+        android:inputType="textEmailAddress"
+        android:layout_above="@+id/editTextPassword"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
 
 
 </RelativeLayout>
