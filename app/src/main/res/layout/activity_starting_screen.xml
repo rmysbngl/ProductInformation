@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     tools:context="com.example.rumeysal.productinformation.StartingScreen"
     android:background="@drawable/webphoto"
@@ -48,6 +47,22 @@
         app:spinning_bar_width="4dp" />
 
     <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_marginBottom="55dp"
+        android:ems="10"
+        android:hint="e-mail"
+        android:gravity="center"
+        android:background="@drawable/name_input"
+        android:inputType="textEmailAddress"
+        android:layout_above="@+id/editTextPassword"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
+
+    <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="50sp"
@@ -63,21 +78,38 @@
         android:layout_alignRight="@+id/editTextEmail"
         android:layout_alignEnd="@+id/editTextEmail" />
 
-    <EditText
-        android:id="@+id/editTextEmail"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="50sp"
-        android:layout_marginBottom="55dp"
-        android:ems="10"
-        android:hint="e-mail"
-        android:gravity="center"
-        android:background="@drawable/name_input"
-        android:inputType="textEmailAddress"
-        android:layout_above="@+id/editTextPassword"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
+        android:layout_height="40sp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="11dp"
+        android:layout_alignLeft="@+id/editTextPassword"
+        android:layout_alignStart="@+id/editTextPassword"
+        android:layout_alignRight="@+id/Baslat"
+        android:layout_alignEnd="@+id/Baslat">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="21dp"
+            android:layout_weight="2"
+            android:text="Not have an account?" />
+
+        <Button
+            android:id="@+id/button2"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="30sp"
+            android:text="Sign In. " />
+
+    </LinearLayout>
+
+
 
 
 </RelativeLayout>
