@@ -192,11 +192,14 @@ public class UrunTanitma extends AppCompatActivity implements  Validator.Validat
     public void onValidationFailed(List<ValidationError> errors) {
         for (ValidationError error : errors) {
             View view = error.getView();
-            String mesaj = error.getCollatedErrorMessage(this);
-            if (view instanceof EditText) {
-                ((EditText) view).setError(mesaj);
-            }
+            String message = error.getCollatedErrorMessage(this);
 
+            // Display error messages ;)
+            if (view instanceof EditText) {
+                ((EditText) view).setError(message);
+            } else {
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
